@@ -45,8 +45,8 @@ Plug 'arzg/vim-colors-xcode'
 "Plug 'rbong/vim-crystalline'
 " 状态栏
 Plug 'itchyny/lightline.vim'
-"" 彩虹括号
-"Plug 'luochen1990/rainbow'
+" 彩虹括号
+Plug 'luochen1990/rainbow'
 "" 函数列表
 "Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
 "" 自动补全括号
@@ -85,7 +85,7 @@ Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
 " markdown 预览插件
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug', 'vimwiki'], 'on': 'MarkdownPreview'}
 "" 功能很强的折叠插件, zc zo
-"Plug 'pseewald/vim-anyfold'
+Plug 'pseewald/vim-anyfold'
 "" 起始界面
 "Plug 'mhinz/vim-startify'
 "" 翻译插件
@@ -156,13 +156,13 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-explorer',
     \ 'coc-floaterm',
+    \ 'coc-git',
     \ ]
 
 
 "    \ 'coc-tabnine',
 "    \ 'coc-word',
 "    \ 'coc-ci',
-"    \ 'coc-git',
 "    \ 'coc-cmake',
 "    \ 'coc-snippets',
 "    \ 'coc-clangd',
