@@ -32,7 +32,7 @@ nnoremap <leader>q q
 " jk表示esc
 "inoremap jk <esc>
 
-augroup keymap_group
+augroup vime_keymap_group
     autocmd!
     " 使用esc退出终端
     if has('nvim')
@@ -77,8 +77,8 @@ nnoremap vv ^vg_
 if !common#functions#HasPlug('vim-airline') && !common#functions#HasPlug('vim-crystalline')
     nnoremap  <M-l> :call common#functions#MoveTabOrBuf(1)<cr>
     nnoremap  <M-h> :call common#functions#MoveTabOrBuf(0)<CR>
-    tnoremap  <M-l> <c-\><c-n>:common#functions#MoveTabOrBuf(1)<cr>
-    tnoremap  <M-h> <c-\><c-n>:common#functions#MoveTabOrBuf(0)<CR>
+    tnoremap  <M-l> <c-\><c-n>:call common#functions#MoveTabOrBuf(1)<cr>
+    tnoremap  <M-h> <c-\><c-n>:call common#functions#MoveTabOrBuf(0)<CR>
 endif
 nnoremap <silent> <leader>tn :tabnew<cr>
 nnoremap <silent> <leader>tc :tabclose<cr>

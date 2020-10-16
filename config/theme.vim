@@ -31,8 +31,8 @@ set incsearch
 set hlsearch
 " 搜索高亮颜色
 hi Search ctermfg=17 ctermbg=190 guifg=#000000 guibg=#ffff00
-" 只有set list后面的才会起作用
 set nolist
+" 只有set list下面的才会起作用
 if &list
     set listchars=tab:\|\→·,nbsp:⣿,extends:»,precedes:«
     set listchars+=eol:¬
@@ -50,26 +50,28 @@ endif
 " let g:srcery_italic = 1
 " let g:srcery_transparent_background = 1
 " colorscheme srcery
+
 " let g:forest_night_enable_italic = 1
 " let g:forest_night_transparent_background = 1
 " colorscheme forest-night
-" colorscheme one
-" colorscheme ci_dark
 
+" colorscheme one
+
+" colorscheme ci_dark
+" colorscheme sonokai
 "let g:signify_sign_add    = '┃'
 "let g:signify_sign_change = '┃'
 "let g:signify_sign_delete = '•'
 "let g:signify_sign_show_count = 0
-"colorscheme xcodewwdc
-"augroup vim-colors-xcode
+"colorscheme xcodedark
+"augroup vim_colors_xcode_group
 "    autocmd!
-"    autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
-"    autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
+"    autocmd vim_colors_xcode_group ColorScheme * hi Comment        cterm=italic gui=italic
+"    autocmd vim_colors_xcode_group ColorScheme * hi SpecialComment cterm=italic gui=italic
 "    autocmd User SignifySetup
 "                \ execute 'autocmd! signify' |
 "                \ autocmd signify TextChanged,TextChangedI * call sy#start()
 "augroup END
-" colorscheme sonokai
 
 " coc 美化
 if common#functions#HasPlug('coc.nvim')
@@ -101,7 +103,11 @@ if common#functions#HasPlug('coc.nvim')
 endif
 
 " 自定义状态栏和tab栏
-if !common#functions#HasPlug('vim-crystalline') && !common#functions#HasPlug('vim-airline') && !common#functions#HasPlug('lightline.vim')
+if !common#functions#HasPlug('vim-crystalline')
+    \ && !common#functions#HasPlug('vim-airline')
+    \ && !common#functions#HasPlug('lightline.vim')
+
+    " 状态栏
     set statusline=2
     set showtabline=2
 
@@ -133,4 +139,6 @@ if !common#functions#HasPlug('vim-crystalline') && !common#functions#HasPlug('vi
     set statusline+=\ %#ToolbarButton#
     set statusline+=\ %{common#functions#FileType()}
     set statusline+=
+
+    " tab 栏
 endif

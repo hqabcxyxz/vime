@@ -126,12 +126,13 @@ Plug 'yianwillis/vimcdoc'
 "endif
 "" 总是匹配tag
 "Plug 'valloric/MatchTagAlways', {'for': ['html', 'css', 'xml']}
-" 显示代码颜色
+" 显示颜色 例如: #654456
 if has('nvim')
     Plug 'norcalli/nvim-colorizer.lua'
 else
     Plug 'RRethy/vim-hexokinase',  { 'do': 'make hexokinase' }
 endif
+
 "" 加强版的 go to file
 "Plug 'tpope/vim-apathy'
 "" 查看启动时间
@@ -140,8 +141,9 @@ endif
 "Plug 'junegunn/goyo.vim', { 'on': 'Goyo', 'for': 'markdown' }
 "\ | Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 "Plug 'markonm/traces.vim'
+"" 语法检查
 "Plug 'rhysd/vim-grammarous', {'for': ['markdown', 'vimwiki', 'md', 'tex']}
-"
+
 " coc插件列表，可根据需要进行删减
 let g:coc_global_extensions = [
     \ 'coc-marketplace',

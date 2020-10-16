@@ -31,7 +31,7 @@ let g:tex_conceal='abdmg'
 " \lm查看内置的imaps
 "
 
-augroup vimtex_group
+augroup vime_vimtex_group
     autocmd!
     autocmd FileType tex setl tw=80
     autocmd FileType tex setl fo+=t
