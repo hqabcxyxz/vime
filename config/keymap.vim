@@ -1,3 +1,5 @@
+" 先导键设置为空格键
+let mapleader = "\<space>"
 " 窗口相关快捷键
 noremap <c-h> <C-w>h
 noremap <c-j> <C-w>j
@@ -28,7 +30,7 @@ nnoremap <BackSpace> :nohl<cr>
 " 使用leader q执行宏录制功能
 nnoremap <leader>q q
 " jk表示esc
-inoremap jk <esc>
+"inoremap jk <esc>
 
 augroup keymap_group
     autocmd!

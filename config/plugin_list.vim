@@ -37,10 +37,10 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 "Plug 'jaredgorski/spacecamp'
 "Plug 'bluz71/vim-moonfly-colors'
 "Plug 'cormacrelf/vim-colors-github'
-"Plug 'arzg/vim-colors-xcode'
+Plug 'arzg/vim-colors-xcode'
 "Plug 'sainnhe/sonokai'
 "Plug 'sonph/onehalf'
-Plug 'dracula/vim', { 'as': 'dracula'}
+"Plug 'dracula/vim', { 'as': 'dracula'}
 "" 顶栏和底栏
 "Plug 'rbong/vim-crystalline'
 " 状态栏
@@ -118,12 +118,12 @@ endif
 "Plug 'troydm/zoomwintab.vim', {'on': 'ZoomWinTabToggle'}
 " vim中文文档
 Plug 'yianwillis/vimcdoc'
-if has('nvim')
-    Plug 'nvim-treesitter/nvim-treesitter'
-else
-    Plug 'sheerun/vim-polyglot'
-    Plug 'octol/vim-cpp-enhanced-highlight'
-endif
+"if has('nvim')
+"    Plug 'nvim-treesitter/nvim-treesitter'
+"else
+"    Plug 'sheerun/vim-polyglot'
+"    Plug 'octol/vim-cpp-enhanced-highlight'
+"endif
 "" 总是匹配tag
 "Plug 'valloric/MatchTagAlways', {'for': ['html', 'css', 'xml']}
 " 显示代码颜色
@@ -144,28 +144,30 @@ endif
 "
 " coc插件列表，可根据需要进行删减
 let g:coc_global_extensions = [
-"    \ 'coc-tsserver',
-"    \ 'coc-prettier',
-"    \ 'coc-calc',
-"    \ 'coc-vimlsp',
     \ 'coc-marketplace',
     \ 'coc-xml',
     \ 'coc-yank',
     \ 'coc-sh',
     \ 'coc-yaml',
+    \ 'coc-json',
+    \ 'coc-lists',
+    \ 'coc-python',
+    \ 'coc-explorer',
+    \ 'coc-floaterm',
+    \ ]
+
+
+"    \ 'coc-tabnine',
+"    \ 'coc-word',
+"    \ 'coc-ci',
+"    \ 'coc-git',
 "    \ 'coc-cmake',
 "    \ 'coc-snippets',
 "    \ 'coc-clangd',
-    \ 'coc-json',
-    \ 'coc-lists',
-    \ 'coc-word',
-    \ 'coc-python',
-    \ 'coc-tabnine',
-    \ 'coc-explorer',
-    \ 'coc-ci',
-    \ 'coc-git',
-    \ ]
-
+"    \ 'coc-tsserver',
+"    \ 'coc-prettier',
+"    \ 'coc-calc',
+"    \ 'coc-vimlsp',
     "\ 'coc-bookmark',
     "\ 'coc-rainbow-fart',
     "\ 'coc-lists',
