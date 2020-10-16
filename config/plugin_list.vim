@@ -2,9 +2,9 @@
 "" Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all'} | Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 "" 检索
-"Plug 'junegunn/fzf.vim'
-"\ | Plug 'junegunn/fzf', { 'do': {-> fzf#install()} }
-"\ | Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
+Plug 'junegunn/fzf.vim'
+\ | Plug 'junegunn/fzf', { 'do': {-> fzf#install()} }
+\ | Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 "" git插件
 "Plug 'tpope/vim-fugitive', {'on': ['Gwrite', 'Gcommit', 'Gread', 'Gdiff', 'Gblame']}
 "\ | Plug 'rbong/vim-flog'
@@ -157,6 +157,7 @@ let g:coc_global_extensions = [
     \ 'coc-explorer',
     \ 'coc-floaterm',
     \ 'coc-git',
+    \ 'coc-vimlsp',
     \ ]
 
 
@@ -169,7 +170,5 @@ let g:coc_global_extensions = [
 "    \ 'coc-tsserver',
 "    \ 'coc-prettier',
 "    \ 'coc-calc',
-"    \ 'coc-vimlsp',
     "\ 'coc-bookmark',
     "\ 'coc-rainbow-fart',
-    "\ 'coc-lists',
