@@ -48,7 +48,7 @@ Plug 'itchyny/lightline.vim'
 " 彩虹括号
 Plug 'luochen1990/rainbow'
 "" 函数列表
-"Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
+Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
 "" 自动补全括号
 "Plug 'jiangmiao/auto-pairs'
 "" 快速包围
