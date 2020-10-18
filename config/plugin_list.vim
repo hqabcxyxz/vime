@@ -159,17 +159,17 @@ let g:coc_global_extensions = [
     \ 'coc-floaterm',
     \ 'coc-git',
     \ 'coc-vimlsp',
+    \ 'coc-tabnine',
+    \ 'coc-word',
+    \ 'coc-tsserver',
+    \ 'coc-rainbow-fart',
     \ ]
 
 
-"    \ 'coc-tabnine',
-"    \ 'coc-word',
 "    \ 'coc-ci',
 "    \ 'coc-cmake',
 "    \ 'coc-snippets',
 "    \ 'coc-clangd',
-"    \ 'coc-tsserver',
 "    \ 'coc-prettier',
 "    \ 'coc-calc',
     "\ 'coc-bookmark',
-    "\ 'coc-rainbow-fart',
