@@ -104,7 +104,7 @@ Plug 'pseewald/vim-anyfold'
 " tmux相关插件
 if  executable("tmux") && strlen($TMUX)
     " tmux与vim窗口间导航
-    Plug 'christoomey/vim-tmux-navigator'
+"    Plug 'christoomey/vim-tmux-navigator'
     " tmux.conf set -g focus-events on
     Plug 'tmux-plugins/vim-tmux-focus-events'
     " 在tmux和vim之间进行复制与粘贴
