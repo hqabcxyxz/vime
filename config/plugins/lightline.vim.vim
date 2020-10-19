@@ -85,6 +85,7 @@ function! LightlineCocFixes() abort
 endfunction
 
 let g:lightline = {
+    \ 'colorscheme': 'solarized',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'readonly', 'filename', 'modified'],

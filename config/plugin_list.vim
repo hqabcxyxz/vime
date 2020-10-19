@@ -9,6 +9,11 @@ Plug 'junegunn/fzf.vim'
 "Plug 'tpope/vim-fugitive', {'on': ['Gwrite', 'Gcommit', 'Gread', 'Gdiff', 'Gblame']}
 "\ | Plug 'rbong/vim-flog'
 "\ | Plug 'airblade/vim-gitgutter'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 "" 注释插件
 "Plug 'scrooloose/nerdcommenter'
 "" 生成注释文档
@@ -23,7 +28,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'arcticicestudio/nord-vim'
 "Plug 'morhetz/gruvbox'
 "Plug 'sainnhe/gruvbox-material'
-"Plug 'sainnhe/forest-night'
+Plug 'sainnhe/forest-night'
 "Plug 'srcery-colors/srcery-vim'
 "Plug 'hardcoreplayers/oceanic-material'
 "Plug 'chuling/ci_dark'
@@ -37,10 +42,11 @@ Plug 'junegunn/fzf.vim'
 "Plug 'jaredgorski/spacecamp'
 "Plug 'bluz71/vim-moonfly-colors'
 "Plug 'cormacrelf/vim-colors-github'
-Plug 'arzg/vim-colors-xcode'
+"Plug 'arzg/vim-colors-xcode'
 "Plug 'sainnhe/sonokai'
 "Plug 'sonph/onehalf'
 "Plug 'dracula/vim', { 'as': 'dracula'}
+Plug 'lifepillar/vim-solarized8'
 "" 顶栏和底栏
 "Plug 'rbong/vim-crystalline'
 " 状态栏

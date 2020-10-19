@@ -51,9 +51,15 @@ endif
 " let g:srcery_transparent_background = 1
 " colorscheme srcery
 
-" let g:forest_night_enable_italic = 1
-" let g:forest_night_transparent_background = 1
-" colorscheme forest-night
+let g:forest_night_enable_italic = 1
+let g:forest_night_transparent_background = 1
+colorscheme forest-night
+
+"换成solarized8主题,记得在lightline.vim中修改状态框主题
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"set background=light
+"colorscheme solarized8
 
 " colorscheme one
 
@@ -62,15 +68,15 @@ endif
 "let g:signify_sign_add    = '┃'
 "let g:signify_sign_change = '┃'
 "let g:signify_sign_delete = '•'
-"let g:signify_sign_show_count = 0
+let g:signify_sign_show_count = 0
 "colorscheme xcodedark
 "augroup vim_colors_xcode_group
 "    autocmd!
 "    autocmd vim_colors_xcode_group ColorScheme * hi Comment        cterm=italic gui=italic
 "    autocmd vim_colors_xcode_group ColorScheme * hi SpecialComment cterm=italic gui=italic
-"    autocmd User SignifySetup
-"                \ execute 'autocmd! signify' |
-"                \ autocmd signify TextChanged,TextChangedI * call sy#start()
+""    autocmd User SignifySetup
+""                \ execute 'autocmd! signify' |
+""                \ autocmd signify TextChanged,TextChangedI * call sy#start()
 "augroup END
 
 " coc 美化
