@@ -168,7 +168,6 @@ let g:coc_global_extensions = [
     \ 'coc-tabnine',
     \ 'coc-word',
     \ 'coc-tsserver',
-    \ 'coc-rainbow-fart',
     \ ]
 
 
@@ -179,3 +178,4 @@ let g:coc_global_extensions = [
 "    \ 'coc-prettier',
 "    \ 'coc-calc',
     "\ 'coc-bookmark',
+"    \ 'coc-rainbow-fart',
