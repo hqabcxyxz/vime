@@ -6,10 +6,10 @@ set updatetime=100
 "    \ 'git':      'git diff --no-color --no-ext-diff -U0 -- %f',
 "    \}
 
-let g:signify_disable_by_default=0
+"let g:signify_disable_by_default=0
 "仅仅在写入时更新sign
-autocmd User SignifyAutocmds
-        \ exe 'au! signify' | au signify BufWritePost * call sy#start()
+"autocmd User SignifyAutocmds
+"       \ exe 'au! signify' | au signify BufWritePost * call sy#start()
 
 nnoremap <leader>gd :SignifyDiff<cr>
 nnoremap <leader>gp :SignifyHunkDiff<cr>
