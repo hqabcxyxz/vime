@@ -66,7 +66,7 @@ Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
 "Plug 'ntpeters/vim-better-whitespace'
 "" 代码段
 "Plug 'honza/vim-snippets'
-"" Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 "" 快速选择窗口
 Plug 't9md/vim-choosewin',  { 'on': 'ChooseWin' }
 " 快速移动
@@ -168,12 +168,12 @@ let g:coc_global_extensions = [
     \ 'coc-tabnine',
     \ 'coc-word',
     \ 'coc-tsserver',
+    \ 'coc-snippets',
     \ ]
 
 
 "    \ 'coc-ci',
 "    \ 'coc-cmake',
-"    \ 'coc-snippets',
 "    \ 'coc-clangd',
 "    \ 'coc-prettier',
 "    \ 'coc-calc',
