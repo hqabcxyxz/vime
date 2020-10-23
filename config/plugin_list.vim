@@ -65,8 +65,8 @@ Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
 "" 显示清除尾部空格
 "Plug 'ntpeters/vim-better-whitespace'
 "" 代码段
-"Plug 'honza/vim-snippets'
-"Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 "" 快速选择窗口
 Plug 't9md/vim-choosewin',  { 'on': 'ChooseWin' }
 " 快速移动
