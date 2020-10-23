@@ -16,6 +16,8 @@ else
 endif
 "" 注释插件
 "Plug 'scrooloose/nerdcommenter'
+""更加轻量的注释插件
+"Plug 'tyru/caw.vim'
 "" 生成注释文档
 "Plug 'kkoomen/vim-doge', {'on': 'DogeGenerate'}
 "" 数据库
@@ -81,6 +83,8 @@ Plug 'easymotion/vim-easymotion', {'on':
 "Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
 " 对齐线
 Plug 'Yggdroot/indentLine', {'for': ['c', 'h', 'cpp', 'python', 'go', 'java', 'vim']}
+" 语言支持包，支持高亮和缩进
+Plug 'sheerun/vim-polyglot'
 "" 多光标
 "Plug 'mg979/vim-visual-multi'
 "" csv插件
@@ -96,10 +100,12 @@ Plug 'pseewald/vim-anyfold'
 "" 起始界面
 "Plug 'mhinz/vim-startify'
 "" 翻译插件
-"Plug 'iamcco/dict.vim', {'on':
+"若是coc-translator 好用了 就可以不用这个插件了
+"Plug 'voldikss/vim-translator', {'on':
 "    \ [
-"    \ '<Plug>DictSearch', '<Plug>DictVSearch', '<Plug>DictWSearch',
-"    \ '<Plug>DictWVSearch', '<Plug>DictRSearch', '<Plug>DictRVSearch'
+"    \ '<Plug>Translate', '<Plug>TranslateV', '<Plug>TranslateW',
+"    \ '<Plug>TranslateWV', '<Plug>TranslateR','<Plug>TranslateRV',
+"    \ '<Plug>TranslateX'
 "    \ ]}
 " tmux相关插件
 if  executable("tmux") && strlen($TMUX)
@@ -117,12 +123,12 @@ endif
 "" latex插件
 "Plug 'lervag/vimtex', {'for': 'tex'}
 "Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
-"" 平滑滚动
-"Plug 'psliwka/vim-smoothie'
+" 平滑滚动
+Plug 'psliwka/vim-smoothie'
 "" 在命令行使用linux命令新建文件文件夹重命名当前buffer等
 "Plug 'tpope/vim-eunuch', {'on': ['Mkdir', 'Rename', 'Unlink', 'Delete', 'Move', 'Chmod', 'Cfind', 'Clocate', 'Lfine', 'Llocate', 'SudoEdit', 'SudoWrite', 'Wall', 'W']}
-"" 最大化窗口，ctrl w o
-"Plug 'troydm/zoomwintab.vim', {'on': 'ZoomWinTabToggle'}
+" 最大化窗口，ctrl w o
+Plug 'troydm/zoomwintab.vim', {'on': 'ZoomWinTabToggle'}
 " vim中文文档
 Plug 'yianwillis/vimcdoc'
 "if has('nvim')
@@ -169,6 +175,7 @@ let g:coc_global_extensions = [
     \ 'coc-word',
     \ 'coc-tsserver',
     \ 'coc-snippets',
+    \ 'coc-translator',
     \ ]
 
 

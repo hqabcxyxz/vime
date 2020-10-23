@@ -241,8 +241,15 @@ function! s:lc_coc_yank() abort
 endfunction
 
 function! s:lc_coc_translator() abort
-    nmap  <leader>e <Plug>(coc-translator-e)
-    nmap  <leader>d <Plug>(coc-translator-p)
+    " 翻译光标下的文本,在浮动窗口回显popup
+    nmap <Leader>t <Plug>(coc-translator-p)
+    vmap <Leader>t <Plug>(coc-translator-pv)
+    " echo
+    nmap <Leader>e <Plug>(coc-translator-e)
+    vmap <Leader>e <Plug>(coc-translator-ev)
+    "" 将光标下的文本替换为翻译内容replace
+    "nmap <Leader>r <Plug>(coc-translator-r)
+    "vmap <Leader>r <Plug>(coc-translator-rv)
 endfunction
 
 function! s:lc_coc_bookmark() abort

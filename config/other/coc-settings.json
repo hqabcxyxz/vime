@@ -1,4 +1,5 @@
 {
+  "http.proxy": "http://127.0.0.1:7890",
   "coc.preferences.extensionUpdateCheck": "daily",
 
   "suggest.acceptSuggestionOnCommitCharacter": true,
@@ -40,6 +41,17 @@
   "diagnostic.hintSign": "●",
   "diagnostic.displayByAle": false,
   "diagnostic.maxWindowHeight": 10,
+
+  "translator.toLang": "zh",
+  "translator.engines":  [
+      "youdao",
+      "google",
+      "haici"
+    ],
+  "translator.enableHover": false,
+  "translator.maxsize": 5000,
+  "translator.window.maxWidth": 999,
+  "translator.window.maxHeight": 999,
 
   "languageserver": {}
 }
