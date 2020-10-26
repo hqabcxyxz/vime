@@ -83,8 +83,6 @@ Plug 'easymotion/vim-easymotion', {'on':
 "Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
 " 对齐线
 Plug 'Yggdroot/indentLine', {'for': ['c', 'h', 'cpp', 'python', 'go', 'java', 'vim']}
-" 语言支持包，支持高亮和缩进
-Plug 'sheerun/vim-polyglot'
 "" 多光标
 "Plug 'mg979/vim-visual-multi'
 "" csv插件
@@ -97,8 +95,8 @@ Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug', 'vimwiki'], 'on': 'MarkdownPreview'}
 "" 功能很强的折叠插件, zc zo
 Plug 'pseewald/vim-anyfold'
-"" 起始界面
-"Plug 'mhinz/vim-startify'
+" 起始界面
+Plug 'mhinz/vim-startify'
 "" 翻译插件
 "若是coc-translator 好用了 就可以不用这个插件了
 "Plug 'voldikss/vim-translator', {'on':
@@ -131,12 +129,12 @@ Plug 'psliwka/vim-smoothie'
 Plug 'troydm/zoomwintab.vim', {'on': 'ZoomWinTabToggle'}
 " vim中文文档
 Plug 'yianwillis/vimcdoc'
-"if has('nvim')
-"    Plug 'nvim-treesitter/nvim-treesitter'
-"else
-"    Plug 'sheerun/vim-polyglot'
-"    Plug 'octol/vim-cpp-enhanced-highlight'
-"endif
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter'
+else
+    Plug 'sheerun/vim-polyglot'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+endif
 "" 总是匹配tag
 "Plug 'valloric/MatchTagAlways', {'for': ['html', 'css', 'xml']}
 " 显示颜色 例如: #654456

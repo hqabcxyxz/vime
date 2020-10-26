@@ -1,10 +1,10 @@
 " 先导键设置为空格键
 let mapleader = "\<space>"
 " 窗口相关快捷键
-noremap <c-h> <C-w>h
-noremap <c-j> <C-w>j
-noremap <c-k> <C-w>k
-noremap <c-l> <C-w>l
+"noremap <c-h> <C-w>h
+"noremap <c-j> <C-w>j
+"noremap <c-k> <C-w>k
+"noremap <c-l> <C-w>l
 tnoremap <c-h> <c-\><c-n><c-w>h
 tnoremap <c-j> <c-\><c-n><c-w>j
 tnoremap <c-k> <c-\><c-n><c-w>k
@@ -16,10 +16,10 @@ nnoremap <M-_> :resize -3<CR>
 nnoremap <M-(> :vertical resize -3<CR>
 nnoremap <M-)> :vertical resize +3<CR>
 " 分割窗口
-nnoremap <c-w>k :abo split <cr>
-nnoremap <c-w>h :abo vsplit <cr>
-nnoremap <c-w>j :rightbelow split <cr>
-nnoremap <c-w>l :rightbelow vsplit <cr>
+"nnoremap <c-w>k :abo split <cr>
+"nnoremap <c-w>h :abo vsplit <cr>
+"nnoremap <c-w>j :rightbelow split <cr>
+"nnoremap <c-w>l :rightbelow vsplit <cr>
 " 关闭窗口
 nnoremap <silent> q <esc>:close<cr>
 vnoremap <silent> q <esc>:close<cr>
