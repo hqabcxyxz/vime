@@ -20,6 +20,10 @@ nnoremap <M-)> :vertical resize +3<CR>
 "nnoremap <c-w>h :abo vsplit <cr>
 "nnoremap <c-w>j :rightbelow split <cr>
 "nnoremap <c-w>l :rightbelow vsplit <cr>
+nnoremap <M-w>- <c-w>-
+nnoremap <M-w>_ <c-w>_
+nnoremap <c-w>- :rightbelow vsplit <cr>
+nnoremap <c-w>_ :rightbelow split <cr>
 " 关闭窗口
 nnoremap <silent> q <esc>:close<cr>
 vnoremap <silent> q <esc>:close<cr>
