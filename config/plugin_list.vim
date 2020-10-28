@@ -183,5 +183,5 @@ let g:coc_global_extensions = [
 "    \ 'coc-clangd',
 "    \ 'coc-prettier',
 "    \ 'coc-calc',
-    "\ 'coc-bookmark',
+"    \ 'coc-bookmark',
 "    \ 'coc-rainbow-fart',
