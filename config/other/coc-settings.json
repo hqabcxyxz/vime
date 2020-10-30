@@ -53,5 +53,6 @@
   "translator.window.maxWidth": 999,
   "translator.window.maxHeight": 999,
 
+
   "languageserver": {}
 }
