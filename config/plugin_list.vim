@@ -164,7 +164,6 @@ let g:coc_global_extensions = [
     \ 'coc-yaml',
     \ 'coc-json',
     \ 'coc-lists',
-    \ 'coc-python',
     \ 'coc-explorer',
     \ 'coc-floaterm',
     \ 'coc-git',
@@ -175,6 +174,8 @@ let g:coc_global_extensions = [
     \ 'coc-snippets',
     \ 'coc-translator',
     \ 'coc-markmap',
+    \ 'coc-pyright',
+    \ 'coc-python',
     \ ]
 
 

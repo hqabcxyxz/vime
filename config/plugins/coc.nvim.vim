@@ -444,6 +444,13 @@ function! s:lc_coc_explorer() abort
     \ })
 endfunction
 
+" 采用开启nvim之前的python环境作为nvim python环境
+function! s:lc_coc_pyright() abort
+"    call coc#config('python',{
+"      \ 'pythonPath': $CONDA_PREFIX . '/bin/python'
+"    \ })
+endfunction
+
 function! s:tmp() abort
 endfunction
 
@@ -464,6 +471,7 @@ let s:coc_config_functions = {
             \ 'coc-python': function('<SID>lc_coc_python'),
             \ 'coc-rainbow-fart': function('<SID>lc_coc_rainbow_fart'),
             \ 'coc-explorer': function('<SID>lc_coc_explorer'),
+            \ 'coc-pyright': function('<SID>lc_coc_pyright'),
             \ 'coc-ci': function('<SID>lc_coc_ci'),
             \ }
 
