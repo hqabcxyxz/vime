@@ -105,6 +105,6 @@ def md5sum(count_str:str) -> str:
 		with open(count_str,'rb') as frb:
 			m.update(frb.read())
 	else:
-		m.update(count_str)
+		m.update(count_str.encode('utf-8'))
 	return m.hexdigest()
 endsnippet
