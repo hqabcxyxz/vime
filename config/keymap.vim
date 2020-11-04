@@ -26,14 +26,14 @@ nnoremap <c-w>_ <Nop>
 nnoremap <c-w>- :rightbelow vsplit <cr>
 nnoremap <c-w>_ :rightbelow split <cr>
 " 关闭窗口
-nnoremap <silent> q <esc>:close<cr>
-vnoremap <silent> q <esc>:close<cr>
+"nnoremap <silent> q <esc>:close<cr>
+"vnoremap <silent> q <esc>:close<cr>
 
 " 关闭搜索颜色
 nnoremap <BackSpace> :nohl<cr>
 
 " 使用leader q执行宏录制功能
-nnoremap <leader>q q
+"nnoremap <leader>q q
 " jk表示esc
 "inoremap jk <esc>
 
@@ -68,7 +68,8 @@ function! s:writeCurrent() abort
     endif
 endfunction
 " noremap <silent> <space><space> <esc>:call common#functions#Wall()<cr>
-noremap <silent> <space><space> <esc>:call <SID>writeCurrent()<cr>
+" noremap <silent> <space><space> <esc>:call <SID>writeCurrent()<cr>
+noremap <silent> <leader>w <esc>:call <SID>writeCurrent()<cr>
 
 nnoremap j gj
 nnoremap k gk
