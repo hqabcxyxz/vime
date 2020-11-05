@@ -92,9 +92,12 @@ Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
 "" 笔记插件，支持markdown
 "Plug 'vimwiki/vimwiki'
 " markdown 预览插件
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug', 'vimwiki'], 'on': 'MarkdownPreview'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown',], 'on': 'MarkdownPreview'}
 "" 功能很强的折叠插件, zc zo
-Plug 'pseewald/vim-anyfold'
+"Plug 'pseewald/vim-anyfold'
+
+Plug 'Konfekt/FastFold', {'for': ['c', 'h', 'cpp', 'python', 'go', 'java', 'vim']}
+
 " 起始界面
 Plug 'mhinz/vim-startify'
 "" 翻译插件
