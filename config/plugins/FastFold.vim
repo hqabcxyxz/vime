@@ -1,3 +1,5 @@
+set foldmethod=manual
+set foldlevel=99 " Open all folds
 " zuz 通过语法折叠来更新Tex,vim,xml,js,r,php,perl的文件折叠
 nnoremap zuz <Plug>(FastFoldUpdate)
 
@@ -9,6 +11,7 @@ let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C','r','R'
 let g:fastfold_fold_movement_commands = ['zj', 'zk']
 
 "涉及到session问题 可能需要安装Vim-Stay插件
+
 
 " 超过500行的文件不启用
 let g:fastfold_minlines = 500
