@@ -96,8 +96,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " 功能很强的折叠插件, zc zo
 Plug 'pseewald/vim-anyfold'
 " 更快的折叠插件
-"Plug 'Konfekt/FastFold', {'for': ['c', 'h', 'cpp', 'python', 'go', 'java', 'vim']}
-"Plug 'zhimsel/vim-stay'
+Plug 'Konfekt/FastFold', {'for': ['c', 'h', 'cpp', 'python', 'go', 'java', 'vim']}
+Plug 'zhimsel/vim-stay'
 " 起始界面
 Plug 'mhinz/vim-startify'
 "" 翻译插件
