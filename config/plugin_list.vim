@@ -182,10 +182,10 @@ let g:coc_global_extensions = [
     \ ]
 
 
+"    \ 'coc-bookmark',
 "    \ 'coc-ci',
 "    \ 'coc-cmake',
 "    \ 'coc-clangd',
 "    \ 'coc-prettier',
 "    \ 'coc-calc',
-"    \ 'coc-bookmark',
 "    \ 'coc-rainbow-fart',

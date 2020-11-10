@@ -26,8 +26,8 @@ set smarttab
 set shiftround
 " set foldmethod=indent                                     " 基于缩进的折叠
 " set foldmethod=syntax                                     " 基于语法的折叠
-set foldmethod=manual
-" set nofoldenable                                          " 启动vim时，关闭折叠
+" set foldmethod=manual                                     " 手动折叠
+set nofoldenable                                          " 启动vim时，关闭折叠
 
 set nobackup
 set nowritebackup
