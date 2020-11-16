@@ -86,7 +86,7 @@ flatten = lambda x: [y for l in x for y in flatten(l)] if type(x) is list else [
 endsnippet
 
 snippet get_all_file_path "获得特定目录下所有的文件的路径列表" b
-def get_all_${1:file}_path(${2:file_dir}:str,filter_=(${3:'.jpg'})) -> list:
+def get_all_${1:file}_path(${2:file_dir}:str,filter_:tuple=(${3:'.jpg'},)) -> list:
 	#遍历文件夹下所有的${1:file}
 	return [os.path.join(maindir,filename) for maindir,_,file_name_list in os.walk(${2:file_dir}) \
 			for filename in file_name_list \
