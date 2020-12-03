@@ -10,4 +10,4 @@ vmap <silent> <Leader>w <Plug>TranslateWV
  " Translate the text in clipboard
 " nmap <silent> <Leader>x <Plug>TranslateX
 
-"let g:translator_proxy_url = 'socks5://127.0.0.1:7891'
+"let g:translator_proxy_url = 'socks5://127.0.0.1:7890'

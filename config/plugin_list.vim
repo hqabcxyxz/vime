@@ -102,12 +102,12 @@ Plug 'pseewald/vim-anyfold'
 Plug 'mhinz/vim-startify'
 "" 翻译插件
 "若是coc-translator 好用了 就可以不用这个插件了
-"Plug 'voldikss/vim-translator', {'on':
-"    \ [
-"    \ '<Plug>Translate', '<Plug>TranslateV', '<Plug>TranslateW',
-"    \ '<Plug>TranslateWV', '<Plug>TranslateR','<Plug>TranslateRV',
-"    \ '<Plug>TranslateX'
-"    \ ]}
+Plug 'voldikss/vim-translator', {'on':
+    \ [
+    \ '<Plug>Translate', '<Plug>TranslateV', '<Plug>TranslateW',
+    \ '<Plug>TranslateWV', '<Plug>TranslateR','<Plug>TranslateRV',
+    \ '<Plug>TranslateX'
+    \ ]}
 " tmux相关插件
 if  executable("tmux") && strlen($TMUX)
     " tmux与vim窗口间导航
@@ -175,7 +175,6 @@ let g:coc_global_extensions = [
     \ 'coc-word',
     \ 'coc-tsserver',
     \ 'coc-snippets',
-    \ 'coc-translator',
     \ 'coc-markmap',
     \ 'coc-pyright',
     \ 'coc-python',
@@ -186,6 +185,7 @@ let g:coc_global_extensions = [
     \ ]
 
 
+"    \ 'coc-translator',
 "    \ 'coc-bookmark',
 "    \ 'coc-prettier',
 "    \ 'coc-rainbow-fart',
