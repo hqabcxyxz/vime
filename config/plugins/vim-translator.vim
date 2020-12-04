@@ -1,9 +1,9 @@
 " Echo translation in the cmdline
-nmap <silent> <Leader>t <Plug>Translate
-vmap <silent> <Leader>t <Plug>TranslateV
+nmap <silent> tt <Plug>Translate
+vmap <silent> tt <Plug>TranslateV
 " Display translation in a window
-nmap <silent> <Leader>w <Plug>TranslateW
-vmap <silent> <Leader>w <Plug>TranslateWV
+nmap <silent> tw <Plug>TranslateW
+vmap <silent> tw <Plug>TranslateWV
 " Replace the text with translation
 "nmap <silent> <Leader>r <Plug>TranslateR
 "vmap <silent> <Leader>r <Plug>TranslateRV
