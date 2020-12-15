@@ -140,9 +140,9 @@ Plug 'yianwillis/vimcdoc'
 if has('nvim')
     "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate','commit': '3c07232'}
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    "Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-    "Plug 'nvim-treesitter/nvim-treesitter-refactor'
-    "Plug 'romgrk/nvim-treesitter-context'
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/nvim-treesitter-refactor'
+    Plug 'romgrk/nvim-treesitter-context'
 else
     Plug 'sheerun/vim-polyglot'
     Plug 'octol/vim-cpp-enhanced-highlight'
