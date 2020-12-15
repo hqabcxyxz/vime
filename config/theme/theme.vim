@@ -22,7 +22,9 @@ endif
 " 美化相关基本配置
 " 高亮当前行列
 set cursorline
-set colorcolumn=81
+set cursorcolumn
+" 高亮textwidth后的一列,使过长的列显示一个红线
+"set colorcolumn=81
 " 光标
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 " 搜索高亮
@@ -46,14 +48,14 @@ if has('nvim')
     set pumblend=20 " 提示框透明
 endif
 
-" 主题选择
-let g:srcery_italic = 1
-let g:srcery_transparent_background = 1
-silent! colorscheme srcery
+"" 主题选择
+"let g:srcery_italic = 1
+"let g:srcery_transparent_background = 1
+"silent! colorscheme srcery
 
-" let g:forest_night_enable_italic = 1
-" let g:forest_night_transparent_background = 1
-" silent! colorscheme forest-night
+ let g:forest_night_enable_italic = 1
+ let g:forest_night_transparent_background = 1
+ silent! colorscheme forest-night
 
 " silent! colorscheme one
 

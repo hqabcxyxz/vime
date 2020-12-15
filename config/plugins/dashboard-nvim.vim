@@ -22,7 +22,7 @@ let g:dashboard_default_executive ='fzf'
           \ ]
 "let g:dashboard_default_header='superman'
 
-let g:dashboard_session_directory= '~/.cache/vim/sessions'
+"let g:dashboard_session_directory= '~/.cache/vim/sessions'
 
 let g:dashboard_custom_shortcut={
    \ 'last_session'       : '',

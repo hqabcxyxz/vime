@@ -48,7 +48,7 @@ Plug 'sainnhe/forest-night'
 "Plug 'sainnhe/sonokai'
 "Plug 'sonph/onehalf'
 "Plug 'dracula/vim', { 'as': 'dracula'}
-Plug 'lifepillar/vim-solarized8'
+"Plug 'lifepillar/vim-solarized8'
 "" 顶栏和底栏
 "Plug 'rbong/vim-crystalline'
 " 状态栏
@@ -73,13 +73,14 @@ Plug 'SirVer/ultisnips'
 "" 快速选择窗口
 Plug 't9md/vim-choosewin',  { 'on': 'ChooseWin' }
 " 快速移动
-Plug 'easymotion/vim-easymotion', {'on':
-   \ [
-   \ '<Plug>(easymotion-bd-f)', '<Plug>(easymotion-overwin-f)',
-   \ '<Plug>(easymotion-overwin-f2)', '<Plug>(easymotion-bd-jk)',
-   \ '<Plug>(easymotion-overwin-line)', '<Plug>(easymotion-bd-w)',
-   \ '<Plug>(easymotion-overwin-w)', '<Plug>(easymotion-s)',
-   \ ]}
+"Plug 'easymotion/vim-easymotion', {'on':
+"   \ [
+"   \ '<Plug>(easymotion-bd-f)', '<Plug>(easymotion-overwin-f)',
+"   \ '<Plug>(easymotion-overwin-f2)', '<Plug>(easymotion-bd-jk)',
+"   \ '<Plug>(easymotion-overwin-line)', '<Plug>(easymotion-bd-w)',
+"   \ '<Plug>(easymotion-overwin-w)', '<Plug>(easymotion-s)',
+"   \ ]}
+Plug 'easymotion/vim-easymotion'
 "" 对齐
 "Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
 " 对齐线
@@ -137,10 +138,11 @@ Plug 'troydm/zoomwintab.vim', {'on': 'ZoomWinTabToggle'}
 " vim中文文档
 Plug 'yianwillis/vimcdoc'
 if has('nvim')
+    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate','commit': '3c07232'}
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-    Plug 'nvim-treesitter/nvim-treesitter-refactor'
-    Plug 'romgrk/nvim-treesitter-context'
+    "Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    "Plug 'nvim-treesitter/nvim-treesitter-refactor'
+    "Plug 'romgrk/nvim-treesitter-context'
 else
     Plug 'sheerun/vim-polyglot'
     Plug 'octol/vim-cpp-enhanced-highlight'
