@@ -100,6 +100,7 @@ Plug 'pseewald/vim-anyfold'
 "Plug 'zhimsel/vim-stay'
 " 起始界面
 Plug 'mhinz/vim-startify'
+"Plug 'glepnir/dashboard-nvim'
 "" 翻译插件
 "若是coc-translator 好用了 就可以不用这个插件了
 Plug 'voldikss/vim-translator', {'on':
@@ -182,6 +183,7 @@ let g:coc_global_extensions = [
     \ 'coc-cmake',
     \ 'coc-calc',
     \ 'coc-ci',
+    \ 'coc-markmap',
     \ ]
 
 
