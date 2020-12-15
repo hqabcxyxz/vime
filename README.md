@@ -1,15 +1,82 @@
 # vime
 
-## 1. About
-
 ![vime](./assets/readme2.png)
 
-该项目结构简单明了，增删配置容易，该项目中每个插件都对应一个单独的配置文件，插件列表可以控制是否载入某个插件及其配置文件，配置直接的耦合性很低，甚至每个单独的配置文件拿出来放到你自己的(neo)vim配置中就可以直接使用了。
+vime是一个结构化的(neo)vim配置，整个结构简单明了，增删配置容易，该项目中每个插件都对应一个单独的配置文件，插件列表可以控制是否载入某个插件及其配置文件，各个插件配置之间的耦合性很低，我们甚至可以将一个插件的配置文件单独拿出来放到自己的(neo)vim配置中直接使用。大家可以根据自己的需求，快速的增减插件。
 
-### 2. 整体结构
+[点击查看截图](https://github.com/fgheng/vime/issues/7)
+[点击查看GIF](https://github.com/fgheng/vime/issues/8)
+
+[如果你有好用的插件推荐，也可以分享一下哦]
+
+## 目录
+
+<!-- vim-markdown-toc GFM -->
+
+* [整体结构](#整体结构)
+* [安装](#安装)
+    - [依赖](#依赖)
+    - [安装](#安装-1)
+* [插件结构](#插件结构)
+* [插件以及快捷键](#插件以及快捷键)
+    - [补全](#补全)
+        + [可选插件](#可选插件)
+        + [快捷键](#快捷键)
+    - [文件管理](#文件管理)
+        + [可选插件](#可选插件-1)
+        + [快捷键](#快捷键-1)
+    - [快速检索](#快速检索)
+        + [可选插件](#可选插件-2)
+        + [快捷键](#快捷键-2)
+    - [基础快捷键](#基础快捷键)
+        + [快捷键](#快捷键-3)
+    - [Git](#git)
+        + [可选插件](#可选插件-3)
+        + [快捷键](#快捷键-4)
+    - [多光标](#多光标)
+        + [可选插件](#可选插件-4)
+        + [快捷键](#快捷键-5)
+    - [快速跳转](#快速跳转)
+        + [可选插件](#可选插件-5)
+        + [快捷键](#快捷键-6)
+    - [注释与文档](#注释与文档)
+        + [可选插件](#可选插件-6)
+        + [快捷键](#快捷键-7)
+    - [终端](#终端)
+        + [可选插件](#可选插件-7)
+        + [快捷键](#快捷键-8)
+    - [代码折叠](#代码折叠)
+        + [可选插件](#可选插件-8)
+        + [快捷键](#快捷键-9)
+    - [笔记](#笔记)
+        + [可选插件](#可选插件-9)
+        + [快捷键](#快捷键-10)
+    - [Latex](#latex)
+        + [可选插件](#可选插件-10)
+        + [快捷键](#快捷键-11)
+        + [其他](#其他)
+    - [tmux](#tmux)
+        + [可选插件](#可选插件-11)
+    - [书签](#书签)
+        + [可选插件](#可选插件-12)
+        + [快捷键](#快捷键-12)
+    - [session](#session)
+    - [Surround](#surround)
+        + [可选插件](#可选插件-13)
+        + [快捷键](#快捷键-13)
+    - [数据库](#数据库)
+    - [绘图](#绘图)
+    - [Debug](#debug)
+    - [Run](#run)
+    - [翻译](#翻译)
+    - [其他](#其他-1)
+* [TODO](#todo)
+
+<!-- vim-markdown-toc -->
+
+## 整体结构
 
 ```bash
-# 下面是新的目录结构，结合(neo)vim的目录结构特征重新划分的
 ├── autoload/
 │   ├── common/
 │   │   ├── common.vim
@@ -18,95 +85,72 @@
 ├── config/
 │   ├── plugins/
 │   ├── other/
+│   ├── theme/
+│   │   ├── theme.vim
+│   │   ├── statusline.vim
+│   │   └── tabline.vim
 │   ├── base.vim
-│   ├── theme.vim
 │   ├── keymap.vim
 │   └── plugin_list.vim
 ├── scripts/
 ├── init.vim
 └── vimrc -> ./init.vim
-
-# 下面是原始的目录结构，所有的配置都在config目录下
-├── config/
-   ├── custom/
-   ├── plugins/
-   ├── base.vim
-   ├── keymap.vim
-   ├── plug.vim
-   ├── plugs-list.vim
-   └── theme.vim
-├── coc-settings.json
-├── init.vim
-└── vimrc -> ./init.vim
 ```
 
-下面简单介绍下整个结构。
+**下面简单介绍下整个结构：**
 
-**下面是新的目录结构：**
-
-1. `autoload/`：
+1. `autoload/`
 
    在(neo)vim中，`autoload/`目录用于自动加载函数，我将全局变量以及全局函数放到了这个目录下的`common/`目录下了，如果你想直接复制一个插件的配置到自己的(neo)vim配置中，那么请不要忘记将这些全局变量复制过去，因为很多插件的配置都用到了这里的全局变量或者全局函数。
 
-2. `plugin/`：
+2. `plugin/`
 
    在(neo)vim中，`plugin/`目录下的配置会在(neo)vim启动的时候自动加载，因此，我主要用于存放一些自定义的配置在这里，此目录相当于旧目录下的`config/custom/`目录。
 
-3. `config/`：
+3. `config/`
 
-   该目录是我自定义的目录，是配置文件所在的主要目录
+   该目录是我自定义的目录，是主要的配置文件目录。
 
-   - `config/plugins/`：
+   - `config/plugins/`
 
-     此目录下面就是所有插件的配置，一个插件对应一个文件，文件的名称与插件的名称相同，比如我又一个插件`Plug user_name/plugin_name.vim`，那么该插件对应的配置文件名称为`plugin_name.vim.vim`
+     此目录下面就是所有插件的配置，一个插件对应一个文件，文件的名称与插件的名称相同，比如我有一个插件`Plug "user_name/plugin_name.vim"`，那么该插件对应的配置文件名称为`plugin_name.vim.vim`，关于该目录下插件的配置，我们统一一下，所有关于该插件的快捷键都统一放到该配置文件的最后。
 
-   - `config/other/`：
+   - `config/other/`
 
      此目录主要存放一些插件需要用到的文件，比如插件[coc](https://github.com/neoclide/coc.nvim)用到的`coc-settings.json`等文件。
 
-   - `config/plugin_list.vim`：
+   - `config/theme/`
+
+     主题配置，(neo)vim主题相关的配置基本上都放到该文件夹下。
+
+   - `config/plugin_list.vim`
 
      此文件是插件列表文件，想要使用什么插件都写到此文件中。(neo)vim在启动的时候会依据该文件中的插件到`plugins_config/plugins/`目录下寻找对应的配置文件并加载。
 
-   - `base.vim`：
+   - `base.vim`
 
      基础配置。
 
-   - `keymap.vim`：
+   - `keymap.vim`
 
      此文件是一些快捷键配置，通常这些快捷键与插件无关，自定义的插件快捷键我一般放到插件对应的配置文件中。
 
-   - `theme.vim`：
 
-     主题配置，(neo)vim主题相关的配置基本上都放到该文件中了。
-
-4. `scripts/`：
+4. `scripts/`
 
    该目录主要存储一些常用的脚本文件，如`preview.sh`等。
 
-5. `init.vim`： 
+5. `init.vim`
 
    (neo)vim初始化时要读取的文件。
 
-6. `vimrc`：
+6. `vimrc`
 
    (neo)vim初始化时要读取的文件，该文件链接到`init.vim`。
 
-**下面是旧的目录结构：**
+## 安装
 
-1. `plug.vim`文件就是`vim-plug`的插件配置文件，里面是我们需要的插件列表，写在这里面的插件在vim启动的时候会加载其对应的配置文件。插件的配置在`config/plugins`目录下，vim/nvim启动的时候会自行判断是否需要加载该目录下的插件配置。
-2. `plugs-list.vim`该文件是一些插件列表，不会加载，只是用来保存下都用过哪些插件，后期想更改插件的时候来这里先找。
-3. `base.vim`用于基础配置
-4. `keymap.vim`用于按键映射
-5. `theme.vim`用于主题配置
-6. `plugins/`目录下是所有插件的配置文件，一个插件一个配置文件，只会加载`plug.vim`中安装的插件的配置。
-7. `custom/`该目录是用户自己定义的简单脚本，该目录下的所有`.vim`脚本都会在启动的时候加载
-
-
-
-### 3. 安装
-
-#### 3.1 依赖
+### 依赖
 
 下面是一些必须或者可选的一些依赖：
 
@@ -122,9 +166,11 @@
 
    此处的neovim是指python包中neovim，通过`pip install neovim`进行安装，必须安装。
 
-4. `neovim-remote`、`xdotool`
+4. `neovim-remote`、`xdotool`、`inkscape`、`rofi`、`pip install inkscape-figures`
 
-   该软件主要用于[vimtex](https://github.com/lervag/vimtex)插件，写latex的用户可能会用到。
+   这些软件主要用于[vimtex](https://github.com/lervag/vimtex)插件，写latex的用户可能会用到。
+
+   其中xdotool主要用于在预览软件中按下ctrl+鼠标左键定位到代码位置，inkscape、rofi、inkscape-figures三个软件主要用于使用inkscape绘图然后自动插入到latex中，主要参考[inkscape-figures](https://github.com/gillescastel/inkscape-figures)。
 
 5. `zathura`
 
@@ -138,7 +184,7 @@
 
    主要是[keysound](https://github.com/skywind3000/vim-keysound)插件使用，用于模拟键盘发声音，可选。
 
-#### 3.2 安装
+### 安装
 
 ```bash
 git clone https://github.com/fgheng/vime -C ~/.config/nvim
@@ -150,10 +196,11 @@ git clone https://github.com/fgheng/vime -C ~/.config/nvim
 
 1. 因为一开始没有安装主题，因此在第一次启动的时候可能会提示找不到主题，属于正常现象，执行完`:PlugInstall`之后再打开(neo)vim即可。
 2. 因为列表中有关于`tmux`的插件，而这些插件只有在`tmux`中打开(neo)vim的时候才会加入到插件列表中，因此，第一次运行vime的时候如果没有启动`tmux`，那么这些关于`tmux`的插件将不会安装，要安装这些插件需要在`tmux`中打开(neo)vim后重新执行`PlugInstall`命令才可以。
+3. 如果使用youcomplete等插件，可能要等待的时间会很长
 
 
 
-### 4. 插件结构
+## 插件结构
 
 此部分主要介绍vime的插件结构。
 
@@ -170,19 +217,19 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 
 当需要为自己使用的插件自定义配置的时候，请按照如下的例子进行：
 
-以`Plug 'juegunn/fzf.vim'`为例，需要在`config/plugins/`目录下建立同名的文件`fzf.vim.vim`，然后在该文件中写自己的配置，这样，在(neo)vim启动的时候会自动去加载该配置文件。
+以`Plug 'juegunn/fzf.vim'`为例，首先我们要在`config/plugin_list.vim`中添加一行`Plug 'juegunn/fzf.vim'`，接下来要为该插件自定义配置，那么需要在`config/plugins/`目录下建立与插件名同名的文件`fzf.vim.vim`，注意后缀`.vim`，最后在该文件中写自己关于该插件的自定义配置即可，这样，在(neo)vim启动的时候会自动去加载该配置文件。
 
 如果不想使用该插件了，那么只需要在`config/plugin_list.vim`中注释掉该插件即可，`config/plugins/fzf.vim.vim`文件则不必删除，(neo)vim在启动的时候将不再加载该配置文件，加减插件十分方便。
 
 
 
-### 5. 插件以及快捷键
+## 插件以及快捷键
 
 下面介绍的是我常用的插件及其快捷键，当然，我会先按照类型进行介绍，同一个类型下可能会有很多插件（一般选择自己喜欢的那个），而我的配置中，同一个类型的插件的快捷键我都尽可能配置的一样，这样，在更换为另一个插件的时候，更改的只有(neo)vim的表现形式而不会改变我们的使用习惯。
 
-#### 5.1 补全
+### 补全
 
-##### 5.1.1 可选插件
+#### 可选插件
 
 对于补全，有很多插件，而我常用的是两个，一个是[coc](https://github.com/neoclide/coc.nvim)，另一个是[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)，两者都属于补全类的插件，因此，两者的快捷键应该一致。
 
@@ -191,14 +238,14 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
    ```viml
    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
    ```
-   
+
 2. 使用[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
 
    ```viml
    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all'}
    ```
 
-##### 5.1.2 快捷键
+#### 快捷键
 
 | 按键       | 描述                                                         | 提供者  |
 | ---------- | ------------------------------------------------------------ | ------- |
@@ -227,11 +274,9 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 | \<space>O | 打开coclist symbols     | coc    |
 |           |                         |        |
 
-##### 5.1.3 GIF
+### 文件管理
 
-#### 5.2 文件管理
-
-##### 5.2.1 可选插件
+#### 可选插件
 
 [weirongxu/*coc*-*explorer*](https://github.com/weirongxu/coc-explorer)、[Shougo/*defx*.nvim](https://github.com/Shougo/defx.nvim)、[nerdtree](https://github.com/preservim/nerdtree)、[ms-jpq/*chadtree*](https://github.com/ms-jpq/chadtree)
 
@@ -247,7 +292,7 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 
    ```viml
    if has('nvim')
-     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } 
+     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
      Plug 'kristijanhusak/defx-icons'
      Plug 'kristijanhusak/defx-git'
    else
@@ -272,7 +317,7 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
    ```
 
-##### 5.2.2 快捷键
+#### 快捷键
 
 | 按键       | 描述                                          | 提供者                      |
 | ---------- | --------------------------------------------- | --------------------------- |
@@ -311,11 +356,9 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 | \<leader>f | 悬浮或者在当前窗口打开                        | coc-explorer/defx/          |
 |            |                                               |                             |
 
-##### 5.2.3 GIF
+### 快速检索
 
-#### 5.3 快速检索
-
-##### 5.3.1 可选插件
+#### 可选插件
 
 [junegunn/*fzf*.vim](https://github.com/junegunn/fzf.vim)、[Yggdroot/*LeaderF*](https://github.com/Yggdroot/LeaderF)、[liuchengxu/*vim*-*clap*](https://github.com/liuchengxu/vim-clap)、coc-lists，其中如果存在前面的三个插件之一，那么coc-lists优先级最低。
 
@@ -346,7 +389,7 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
    let g:coc_global_extensions = ['coc-lists']
    ```
 
-##### 5.3.2 快捷键
+#### 快捷键
 
 | 按键  | 描述                                                         | 提供者                                   |
 | ----- | ------------------------------------------------------------ | ---------------------------------------- |
@@ -367,11 +410,11 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 | \<F9> | locationList                                                 | fzf/clap                                 |
 |       |                                                              |                                          |
 
-#### 5.4 基础快捷键
+### 基础快捷键
 
 这些快捷键主要是操作窗口与buf的。
 
-##### 5.4.1 快捷键
+#### 快捷键
 
 | 按键           | 描述                                                         | 提供者        |
 | -------------- | ------------------------------------------------------------ | ------------- |
@@ -400,9 +443,9 @@ Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 | alt-H/L        | 将当前的tab移动到左侧/右侧                                   |               |
 | alt-h/l        | 切换到上一个/下一个tab<br>如果存在浮动终端，则切换为上一个或下一个浮动终端<br>如果不存在多个tab，那么切换上一个或下一个buffer |               |
 
-#### 5.5 Git
+### Git
 
-##### 5.5.1 可选插件
+#### 可选插件
 
 git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblade/vim-gitgutter)、[tpope/vim-*fugitive*](https://github.com/tpope/vim-fugitive)、[neoclide/*coc-git*](https://github.com/neoclide/coc-git)
 
@@ -424,7 +467,7 @@ git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblad
    let g:coc_global_extensions = ['coc-git']
    ```
 
-##### 5.5.2 快捷键
+#### 快捷键
 
 | 按键        | 模式   | 描述                           | 提供者            |
 | ----------- | ------ | ------------------------------ | ----------------- |
@@ -439,9 +482,9 @@ git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblad
 | \<leader>gb | normal | blame                          | fugitive          |
 |             |        |                                |                   |
 
-#### 5.6 多光标
+### 多光标
 
-##### 5.6.1 可选插件
+#### 可选插件
 
 多光标使用的是插件[vim-visual-multi](https://github.com/mg979/vim-visual-multi)以及coc自带的多光标，如果`plug.vim`中没有[vim-visual-multi](https://github.com/mg979/vim-visual-multi)那么会使用coc自带的插件，coc行为与前者类似，但是功能不如前者多。
 
@@ -457,7 +500,7 @@ git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblad
    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
    ```
 
-##### 5.6.2 快捷键
+#### 快捷键
 
 | 按键             | 模式                  | 描述                                                         | 提供者           |
 | ---------------- | --------------------- | ------------------------------------------------------------ | ---------------- |
@@ -477,9 +520,9 @@ git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblad
 | \\\/             | normal                | 以正则匹配的方式设置多光标                                   | vim-visual-multi |
 |                  |                       |                                                              |                  |
 
-#### 5.7 快速跳转
+### 快速跳转
 
-##### 5.7.1 可选插件
+#### 可选插件
 
 快速跳转使用的是[vim-easymotion](https://github.com/easymotion/vim-easymotion)或者[clever-f](https://github.com/rhysd/clever-f.vim)，easymotion中只使用了两个功能，一个是使用char进行跳转，另一个是跳转到行。
 
@@ -495,7 +538,7 @@ git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblad
    Plug 'rhysd/clever-f.vim'
    ```
 
-##### 5.7.2 快捷键
+#### 快捷键
 
 | 按键 | 模式   | 描述                                                         | 提供者                  |
 | ---- | ------ | ------------------------------------------------------------ | ----------------------- |
@@ -505,9 +548,9 @@ git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblad
 
 
 
-#### 5.8 注释与文档
+### 注释与文档
 
-##### 5.8.1 可选插件
+#### 可选插件
 
 文档生成器使用[kkoomen/*vim*-*doge*](https://github.com/kkoomen/vim-doge)，注释插件使用[nerdcomment](https://github.com/preservim/nerdcommenter)或者[*tyru*/*caw*.*vim*](https://github.com/tyru/caw.vim)，caw功能没有nerdcomment多，但是简洁。
 
@@ -529,7 +572,7 @@ git插件可以选择使用[airblade/vim-*gitgutter*](https://github.com/airblad
    Plug 'tyru/caw.vim'
    ```
 
-##### 5.8.2 快捷键
+#### 快捷键
 
 | 按键       | 模式   | 描述         |
 | ---------- | ------ | ------------ |
@@ -567,11 +610,9 @@ caw快捷键
 |                    |               |                                            |
 | \<leader>cn        |               |                                            |
 
-##### 5.8.3 GIF
+### 终端
 
-#### 5.9 终端
-
-##### 5.9.1 可选插件
+#### 可选插件
 
 终端使用的是[voldikss/vim-*floaterm*](https://github.com/voldikss/vim-floaterm)
 
@@ -581,7 +622,7 @@ caw快捷键
    Plug 'voldikss/vim-floaterm'
    ```
 
-##### 5.9.2 快捷键
+#### 快捷键
 
 | 按键  | 模式           | 描述                         |
 | ----- | -------------- | ---------------------------- |
@@ -590,11 +631,9 @@ caw快捷键
 | alt h | tnormal        | 打开终端后，切换到上一个终端 |
 | alt l | tnormal        | 打开终端后，切换到下一个终端 |
 
-##### 5.9.3 GIF
+### 代码折叠
 
-#### 5.10 代码折叠
-
-##### 5.10.1 可选插件
+#### 可选插件
 
 代码折叠使用的插件是[pseewald/vim-*anyfold*](https://github.com/pseewald/vim-anyfold)
 
@@ -602,26 +641,51 @@ caw快捷键
 Plug 'pseewald/vim-anyfold'
 ```
 
-##### 5.10.2 快捷键
+#### 快捷键
 
-| 按键 | 模式   | 描述                 |
-| ---- | ------ | -------------------- |
-| zc   | normal | 折叠                 |
-| zC   | normal | 循环折叠             |
-| zo   | normal | 打开折叠             |
-| zO   | normal | 循环打开折叠         |
-| zc   | normal | 打开折叠或者关闭折叠 |
-| zA   | normal | za的循环             |
-| zm   | normal | 折起更多             |
-| zM   | normal | 折起所有             |
-| zr   | normal | 减少折叠             |
-|      | normal | 打开所有折叠         |
+| 按键     | 模式   | 描述                                                   |
+| -------- | ------ | ------------------------------------------------------ |
+| zc       | normal | 关闭光标下的折叠                                       |
+| zC       | normal | 关闭光标下的折叠以及嵌套的折叠                         |
+| zo       | normal | 打开光标下的折叠                                       |
+| zO       | normal | 打开光标下的折叠以及嵌套的折叠                         |
+| za       | normal | 光标下折叠若是关闭则打开若是打开则关闭                 |
+| zA       | normal | 光标下折叠若是关闭则打开包括嵌套若是打开则关闭包括嵌套 |
+| zm       | normal | 一层一层的关闭折叠                                     |
+| zM       | normal | 关闭所有折叠                                           |
+| zr       | normal | 一层一层的打开折叠                                     |
+| zR       | normal | 打开所有折叠                                           |
+| zn       | normal | 禁用折叠                                               |
+| zN       | normal | 启用折叠                                               |
+| zj       | normal | 移动到下一个折叠                                       |
+| zk       | normal | 移动到上一个折叠                                       |
+| \<enter> | normal | 打开或者关闭折叠                                       |
 
-##### 5.10.3 GIF
 
-#### 5.11 笔记
 
-##### 5.11.1 可选插件
+### 格式化
+
+#### 可选插件
+
+格式化主要是使用coc中的格式化功能，当然你也可以自己增加格式化插件比如[sbdchd/*neoformat*](https://github.com/sbdchd/neoformat)等，另外格式化部分还有[junegunn/*vim*-*easy*-*align*](https://github.com/junegunn/vim-easy-align)这个插件，该插件主要用于对齐。
+
+```
+Plug 'junegunn/vim-easy-align'
+```
+
+#### 快捷键
+
+| 快捷键    | 模式               | 描述                                                    |
+| --------- | ------------------ | ------------------------------------------------------- |
+| Format    | 命令               | 格式化代码                                              |
+| EasyAlign | visual模式下的命令 | 代码对齐，按下enter可以选择对齐方式（居左，居右，居中） |
+|           |                    |                                                         |
+
+
+
+### 笔记
+
+#### 可选插件
 
 笔记使用的是插件[vimwiki/*vimwiki*](https://github.com/vimwiki/vimwiki)，可以记笔记可以写日记，支持markdown。
 
@@ -629,7 +693,7 @@ Plug 'pseewald/vim-anyfold'
 
 ![biji](https://s1.ax1x.com/2020/03/29/GE03VS.gif)
 
-##### 5.11.2 快捷键
+#### 快捷键
 
 | 按键                 | 模式    | 描述                       |
 | -------------------- | ------- | -------------------------- |
@@ -667,9 +731,9 @@ Plug 'pseewald/vim-anyfold'
 | gqq 或 gww           | normal  | 格式化表格                 |
 |                      |         |                            |
 
-#### 5.12 Latex
+### Latex
 
-##### 5.12.1 可选插件
+#### 可选插件
 
 latex可以选择使用[lervag/*vimtex*](https://github.com/lervag/vimtex)
 
@@ -677,19 +741,20 @@ latex可以选择使用[lervag/*vimtex*](https://github.com/lervag/vimtex)
 Plug 'lervag/vimtex'
 ```
 
-##### 5.12.2 快捷键
+#### 快捷键
 
-| 按键              | 模式   | 描述                        |
-| ----------------- | ------ | --------------------------- |
-| \<leader>ll       | normal | 准备编译文档                |
-| \<leader>lv       | normal | 在pdf文档中定位到当前位置   |
-| \<leader>ll or lk | normal | 停止编译                    |
-| \<leader>le       | normal | 删除log，errors以及warnings |
-| \<leader>lc       | normal | 删除多余的文档              |
-| %                 | normal | 在定界符之间跳转            |
-|                   |        |                             |
+| 按键              | 模式   | 描述                                         |
+| ----------------- | ------ | -------------------------------------------- |
+| \<leader>ll       | normal | 准备编译文档                                 |
+| \<leader>lv       | normal | 在pdf文档中定位到当前位置                    |
+| \<leader>ll or lk | normal | 停止编译                                     |
+| \<leader>le       | normal | 删除log，errors以及warnings                  |
+| \<leader>lc       | normal | 删除多余的文档                               |
+| %                 | normal | 在定界符之间跳转                             |
+| \<c-i>            | insert | 打开inkscape绘图，然后插入到latex中          |
+| \<c-i>            | normal | normal模式下打开inkscape绘图，修改当前的图形 |
 
-##### 5.12.3 其他
+#### 其他
 
 关于neovim+vimtex+zathura的反向搜索，也就是在从zathura定位到vim中的代码位置，首先需要安装一些依赖，`neovim-remote`、`xdotool`，然后需要编辑zathura的配置文件`~/.config/zathura/zathurarc`，加入如下内容：
 
@@ -700,9 +765,33 @@ set synctex-editor-command "gvim --remote-silent +%l %f"
 
 这样在zathura中就可以使用ctrl+鼠标左键直接定位到对应的代码位置了。
 
-#### 5.13 书签
+### tmux
 
-##### 5.13.1 可选插件
+#### 可选插件
+
+与tmux相关的插件有如下几个：
+
+1. 窗口导航 vim-tmux-navigator
+   ```viml
+   Plug 'christoomey/vim-tmux-navigator'
+   ```
+2. vim-tmux-focus-events
+   ```viml
+   " 需要在tmux的配置文件~/.tmux.conf中添加 set -g focus-events on
+   Plug 'tmux-plugins/vim-tmux-focus-events'
+   ```
+3. tmux与vim之间复制粘贴
+   ```viml
+   Plug 'roxma/vim-tmux-clipboard'
+   ```
+4. 提示tmux终端中的内容
+   ```viml
+   Plug 'wellle/tmux-complete.vim'
+   ```
+
+### 书签
+
+#### 可选插件
 
 标记使用[vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)或者[coc-bookmark](https://github.com/voldikss/coc-bookmark)，因为[coc-explorer](https://github.com/weirongxu/coc-explorer)支持显示[coc-bookmark](https://github.com/voldikss/coc-bookmark)中的书签，所以我使用[coc-bookmark](https://github.com/voldikss/coc-bookmark)，不过可以在`config/plug.vim`中加入[vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)两者快捷键一致。
 
@@ -718,7 +807,7 @@ set synctex-editor-command "gvim --remote-silent +%l %f"
    Plug 'MattesGroeger/vim-bookmarks'
    ```
 
-##### 5.13.2 快捷键
+#### 快捷键
 
 | 按键 | 模式   | 描述                   |
 | ---- | ------ | ---------------------- |
@@ -730,23 +819,31 @@ set synctex-editor-command "gvim --remote-silent +%l %f"
 
 
 
-#### 5.14 session
+### session
 
 默认使用了[vim-startify](https://github.com/mhinz/vim-startify)这个插件作为开始界面，该插件的可以自定义起始界面，配置在`./config/plugins/vim-startify.vim`下，可以自定义配置。session使用轮换方式，第一次存储一个session0，第二次还是存储session0，不过上一次的session0变为了session1，第三次存储session0，前面的session0变为session1，session1变为session2。
 
 
 
-#### 5.15 Surround
+### Surround
 
-##### 5.15.1 可选插件
+#### 可选插件
 
-Surround是使用快捷键来给指定的字符串添加包围，比如引号等。使用的插件是[tpope/*vim*-*surround*](https://github.com/tpope/vim-surround)
+Surround是使用快捷键来给指定的字符串添加包围，比如引号等。使用的插件是[tpope/*vim*-*surround*](https://github.com/tpope/vim-surround)以及[vim-sanwich](https://github.com/machakann/vim-sandwich)
+
+1. 使用vim-surround
 
 ```viml
 Plug 'tpope/vim-surround'
 ```
 
-##### 5.15.2 快捷键
+2. 使用vim-sandwich
+
+```viml
+Plug 'machakann/vim-sandwich'
+```
+
+#### 快捷键
 
 | 按键      | 模式   | 描述                                             |
 | --------- | ------ | ------------------------------------------------ |
@@ -759,35 +856,41 @@ Plug 'tpope/vim-surround'
 | yss)      | normal | 整行增加括号                                     |
 | ysiw\<em> | normal | 在一个单词处增加\<em>\</em>包围                  |
 
+下面是vim-sanwich的快捷键，不过我增加了与vim-surround一致的快捷键配置，可以直接使用vim-surround的快捷键。
+| 按键                                 | 模式   | 描述                                             |
+| ---------                            | ------ | ------------------------------------------------ |
+| sa{motion/textobject}{addition}      | normal | 增加，例如saiw'                                  |
+| sdb or sd{deletion}                  | normal | 删除，例如sdb sd'                                |
+| srb{addition} sr{deletion}{addition} | normal | 替换，例如srb'，sr'<                             |
 
 
 
 
-#### 5.16 数据库
+### 数据库
 
 数据库可以选择使用[tpope/vim-*dadbod*](https://github.com/tpope/vim-dadbod)
 
 
 
-#### 5.17 绘图
+### 绘图
 
 绘图使用[vim-scripts/*DrawIt*](https://github.com/vim-scripts/DrawIt)，命令行输入`DrawIt`进入绘图模式。
 
 
 
-#### 5.18 Debug
+### Debug
 
 debug可以选择使用[puremourning/*vimspector*](https://github.com/puremourning/vimspector)，暂时没有需求，所以还没有配置。
 
 
 
-#### 7.19 Run
+### Run
 
 代码run使用韦大的插件，但是我现在还没有需求，做一暂时没有配置。
 
 
 
-#### 7.20 翻译
+### 翻译
 
 翻译之前使用[voldikss/*coc-translator*](https://github.com/voldikss/coc-translator)，接下来又换成了[voldikss/*vim*-*translator*](https://github.com/voldikss/vim-translator)然后感觉都稍微有些许问题，最后选择了[iamcco/*dict*.*vim*](https://github.com/iamcco/dict.vim)，但是该插件不支持悬浮窗口，我需要对其更改下支持悬浮窗口。
 
@@ -799,25 +902,24 @@ debug可以选择使用[puremourning/*vimspector*](https://github.com/puremourni
 
 
 
-#### 7.21 其他
+### 其他
 
-| 按键             | 模式   | 描述                                                          |
-| ---------------- | ------ | ----------------------------------------------------------    |
-| leader q         | normal | 进入宏录制，因为q映射为了关闭窗口，所以使用leader q作为宏录制 |
-| alt x            | normal | 使用系统默认应用打开当前buffer文件                            |
-| \<space>\<space> | normal | 保存当前的buffer，不包括terminal，目录树等                    |
-|                  |        |                                                               |
+| 按键             | 模式   | 描述                                                       |
+| ---------------- | ------ | ---------------------------------------------------------- |
+| alt q            | normal | 进入宏录制，因为q映射为了关闭窗口，所以使用alt q作为宏录制 |
+| alt x            | normal | 使用系统默认应用打开当前buffer文件                         |
+| \<space>\<space> | normal | 保存当前的buffer，不包括terminal，目录树等                 |
+|                  |        |                                                            |
 
 
 
 ## TODO
 
-- [x] 更新ycm的配置，使其与coc行为一致
-- [x] 更新nerdtree的配置（已更新部分），使其与defx, coc-explorer行为一致
-- [ ] 录制GIF放到issue中
-- [ ] 更新tagbar的配置
-- [ ] 更新clap，leaderf配置，使其与fzf行为一致
-- [x] 重新规划一下目录结构
-- [ ] 重新编写readme，每个部分都应该加上所使用的插件，例：`Plug 'user/plug_name'`
-- [x] 将一些通用函数写到一个文件中
-
+- [✓] 更新ycm的配置，使其与coc行为一致
+- [✓] 更新nerdtree的配置（已更新部分），使其与defx, coc-explorer行为一致
+- [✓] 录制GIF放到issue中
+- [✓] 更新tagbar的配置
+- [✓] 更新clap，leaderf配置，使其与fzf行为一致
+- [✓] 重新规划一下目录结构
+- [✓] 重新编写readme，每个部分都应该加上所使用的插件，例：`Plug 'user/plug_name'`
+- [✓] 将一些通用函数提取出来

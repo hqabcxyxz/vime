@@ -2,9 +2,9 @@
 "" Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all'} | Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 "" 检索
-Plug 'junegunn/fzf.vim'
-\ | Plug 'junegunn/fzf', { 'do': {-> fzf#install()} }
-\ | Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': {-> fzf#install()} }
+Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+Plug 'junegunn/fzf.vim' | Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
 " git插件
 "Plug 'tpope/vim-fugitive', {'on': ['Gwrite', 'Gcommit', 'Gread', 'Gdiff', 'Gblame']}
 "\ | Plug 'rbong/vim-flog'
@@ -19,9 +19,9 @@ endif
 ""更加轻量的注释插件
 "Plug 'tyru/caw.vim'
 "" 生成注释文档
-"Plug 'kkoomen/vim-doge', {'on': 'DogeGenerate'}
+"Plug 'kkoomen/vim-doge', {'do': {-> doge#install()}}
 "" 数据库
-"" Plug 'tpope/vim-dadbod' | Plug 'kristijanhusak/vim-dadbod-ui' | Plug 'kristijanhusak/vim-dadbod-completion'
+"Plug 'tpope/vim-dadbod' | Plug 'kristijanhusak/vim-dadbod-ui' | Plug 'kristijanhusak/vim-dadbod-completion'
 "" 全局替换插件
 "Plug 'brooth/far.vim'
 " 主题theme类插件
@@ -53,6 +53,7 @@ Plug 'lifepillar/vim-solarized8'
 "Plug 'rbong/vim-crystalline'
 " 状态栏
 Plug 'itchyny/lightline.vim'
+" Plug 'liuchengxu/eleline.vim'
 " 彩虹括号
 "Plug 'luochen1990/rainbow'
 Plug 'kien/rainbow_parentheses.vim'
@@ -91,8 +92,10 @@ Plug 'Yggdroot/indentLine', {'for': ['c', 'h', 'cpp', 'python', 'go', 'java', 'v
 Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
 "" 笔记插件，支持markdown
 "Plug 'vimwiki/vimwiki'
+" Plug 'SidOfc/mkdx'
 " markdown 预览插件
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown',], 'on': 'MarkdownPreview'}
+" Plug 'mzlogin/vim-markdown-toc', {'on': ['GenTocGFM', 'GenTocRedcarpet', 'GenTocGitLab', 'GenTocMarked']}
 " 功能很强的折叠插件, zc zo
 Plug 'pseewald/vim-anyfold'
 " 更快的折叠插件
@@ -134,7 +137,10 @@ Plug 'troydm/zoomwintab.vim', {'on': 'ZoomWinTabToggle'}
 " vim中文文档
 Plug 'yianwillis/vimcdoc'
 if has('nvim')
-    Plug 'nvim-treesitter/nvim-treesitter',{'do': ':TSUpdate','commit': '3c07232'}
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/nvim-treesitter-refactor'
+    Plug 'romgrk/nvim-treesitter-context'
 else
     Plug 'sheerun/vim-polyglot'
     Plug 'octol/vim-cpp-enhanced-highlight'
@@ -158,32 +164,47 @@ endif
 "Plug 'markonm/traces.vim'
 "" 语法检查
 "Plug 'rhysd/vim-grammarous', {'for': ['markdown', 'vimwiki', 'md', 'tex']}
+" 首先需要在config/plugin_list.vim中增加插件
+"Plug 'matze/vim-move', {'on': [
+"            \ '<Plug>MoveBlockDown',
+"            \ '<Plug>MoveBlockUp',
+"            \ '<Plug>MoveBlockRight',
+"            \ '<Plug>MoveBlockLeft']}
+"Plug 'simnalamburt/vim-mundo'
+"if has('nvim')
+"    Plug 'kyazdani42/nvim-web-devicons'
+"else
+"    Plug 'ryanoasis/vim-devicons'
+"endif
+" 忘记sudo?使用sudowrite或sw
+"Plug 'lambdalisue/suda.vim'
+"Plug 'fgheng/ResizeWindow.vim'
+"Plug 'tyru/open-browser.vim'
 
 " coc插件列表，可根据需要进行删减
 let g:coc_global_extensions = [
-    \ 'coc-marketplace',
-    \ 'coc-xml',
-    \ 'coc-yank',
-    \ 'coc-sh',
-    \ 'coc-yaml',
-    \ 'coc-json',
-    \ 'coc-lists',
-    \ 'coc-explorer',
-    \ 'coc-floaterm',
-    \ 'coc-git',
-    \ 'coc-vimlsp',
-    \ 'coc-tabnine',
-    \ 'coc-word',
-    \ 'coc-tsserver',
-    \ 'coc-snippets',
-    \ 'coc-markmap',
-    \ 'coc-pyright',
-    \ 'coc-python',
     \ 'coc-clangd',
     \ 'coc-cmake',
     \ 'coc-calc',
     \ 'coc-ci',
+    \ 'coc-explorer',
+    \ 'coc-floaterm',
+    \ 'coc-git',
+    \ 'coc-json',
+    \ 'coc-lists',
+    \ 'coc-marketplace',
     \ 'coc-markmap',
+    \ 'coc-pyright',
+    \ 'coc-python',
+    \ 'coc-sh',
+    \ 'coc-snippets',
+    \ 'coc-tabnine',
+    \ 'coc-tsserver',
+    \ 'coc-vimlsp',
+    \ 'coc-word',
+    \ 'coc-xml',
+    \ 'coc-yank',
+    \ 'coc-yaml',
     \ ]
 
 

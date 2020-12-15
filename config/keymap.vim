@@ -9,12 +9,14 @@ tnoremap <c-h> <c-\><c-n><c-w>h
 tnoremap <c-j> <c-\><c-n><c-w>j
 tnoremap <c-k> <c-\><c-n><c-w>k
 tnoremap <c-l> <c-\><c-n><c-w>l
-" 更改窗口垂直大小
-nnoremap <M--> :resize +3<CR>
-nnoremap <M-_> :resize -3<CR>
-" 更改窗口水平大小
-nnoremap <M-(> :vertical resize -3<CR>
-nnoremap <M-)> :vertical resize +3<CR>
+if !common#functions#HasPlug('ResizeWindow.vim')
+    " 更改窗口垂直大小
+    nnoremap <M--> :resize +3<CR>
+    nnoremap <M-_> :resize -3<CR>
+    " 更改窗口水平大小
+    nnoremap <M-(> :vertical resize -3<CR>
+    nnoremap <M-)> :vertical resize +3<CR>
+endif
 " 分割窗口
 "nnoremap <c-w>k :abo split <cr>
 "nnoremap <c-w>h :abo vsplit <cr>
@@ -29,22 +31,43 @@ nnoremap <c-w>_ :rightbelow split <cr>
 "nnoremap <silent> q <esc>:close<cr>
 "vnoremap <silent> q <esc>:close<cr>
 
+" 使用回车打开关闭折叠
+nnoremap <CR> za
+" shift enter，为何不可以？
+nnoremap <S-Return> zMzo
 " 关闭搜索颜色
 nnoremap <BackSpace> :nohl<cr>
 
-" 使用leader q执行宏录制功能
-"nnoremap <leader>q q
+" 命令行移动
+cnoremap <C-h> <Home>
+cnoremap <C-l> <End>
+" cnoremap <C-l> <Right>
+" cnoremap <C-j> <Left>
+
+" 使用alt q执行宏录制功能
+"nnoremap <M-q> q
+" 去除EX模式
+nmap Q <nop>
 " jk表示esc
 "inoremap jk <esc>
+
+nmap << <<_
+nmap >> >>_
+
+nnoremap ! :!
+
+" 跳转到最后
+" 0是跳转到开头
+nnoremap 9 $
 
 augroup vime_keymap_group
     autocmd!
     " 使用esc退出终端
     if has('nvim')
-            au TermOpen term://* tnoremap <buffer> <Esc> <c-\><c-n> | startinsert
-            au BufEnter term://* startinsert
+        au TermOpen term://* tnoremap <buffer> <Esc> <c-\><c-n> " | startinsert
+        " au BufEnter term://* startinsert
     else
-        au TerminalOpen term://* tnoremap <buffer> <Esc> <C-\><C-n> | startinsert
+        au TerminalOpen term://* tnoremap <buffer> <Esc> <C-\><C-n> " | startinsert
         " au BufEnter term://* startinsert
     endif
 augroup END
@@ -69,7 +92,9 @@ function! s:writeCurrent() abort
 endfunction
 " noremap <silent> <space><space> <esc>:call common#functions#Wall()<cr>
 " noremap <silent> <space><space> <esc>:call <SID>writeCurrent()<cr>
-noremap <silent> <leader>w <esc>:call <SID>writeCurrent()<cr>
+" xnoremap <silent> <space><space> <esc>:call <SID>writeCurrent()<cr>
+noremap <silent> <space>w <esc>:silent! write<cr>
+xnoremap <silent> <space>w <esc>:silent! write<cr>
 
 nnoremap j gj
 nnoremap k gk

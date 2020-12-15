@@ -51,13 +51,29 @@ endfunction
 function! common#functions#MoveTabOrBuf(direction) abort
     " 移动buffer或者tab
     " 0 <- 1 ->
+
+    " 如果在floaterm中
+    if &ft ==# "floaterm"
+        if a:direction == 0
+            exec "FloatermNext"
+        else
+            exec "FloatermPrev"
+        endif
+
+        return
+    endif
+
     if tabpagenr('$') > 1
-        if a:direction == 0 | exec 'tabprevious'
-        elseif a:direction == 1 | exec 'tabnext'
+        if a:direction == 0
+            exec 'tabprevious'
+        elseif a:direction == 1
+            exec 'tabnext'
         endif
     else
-        if a:direction == 0 | exec 'bprevious'
-        elseif a:direction == 1 | exec 'bnext'
+        if a:direction == 0
+            exec 'bprevious'
+        elseif a:direction == 1
+            exec 'bnext'
         endif
     endif
 endfunction
@@ -132,9 +148,7 @@ endfunction
 
 function! common#functions#ReadOnly() abort
     " 判断是否只读
-    if &filetype == "help"
-        return ""
-    elseif &readonly
+    if &readonly
         return "  "
     else
         return ""
@@ -142,18 +156,25 @@ function! common#functions#ReadOnly() abort
 endfunction
 
 function! common#functions#GitBranch() abort
-    " 获取git分支
-    let l:git_branch=get(g:, 'coc_git_status', '')
-    if empty(l:git_branch)
-        return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-    else
+    " 根据不同的插件获取git分支
+
+    let l:git_branch = get(g:, 'coc_git_status', '')
+    if l:git_branch != ''
         return strlen(l:git_branch) > 0 ? l:git_branch : ''
+    elseif exists('fugitive#head')
+        return fugitive#head(8)
+    elseif exists('*gitbranch#name')
+        return gitbranch#name()
+    elseif exists('*vcs#info')
+        return vcs#info('%b')
     endif
 endfunction
 
 function! common#functions#GitCount() abort
     " Git修改计数
     let l:git_count=get(b:, 'coc_git_status', '')
+    return l:git_count
+
     if empty(l:git_count)
         if exists('*GitGutterGetHunkSummary')
             let [a,m,r] = GitGutterGetHunkSummary()
@@ -168,12 +189,70 @@ endfunction
 
 function! common#functions#MethodOrFunction() abort
     " 当前的方法或者函数
-    if common#functions#HasPlug('vista.vim')
-        return get(b:, 'vista_nearest_method_or_function', '')
-    endif
+    return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 function! common#functions#BufLineAndColInfo() abort
     " 获得当前buffer的行，列等信息
     return printf(' %d%% ☰ %d:%d', 100*line('.')/line('$'),  line('.'), col('.'))
+endfunction
+
+function! common#functions#getVisualSelection() abort
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+
+function! common#functions#CocError() abort
+    if !common#functions#HasPlug('coc.nvim')
+        return ""
+    endif
+    let error_sign = get(g:, 'coc_status_error_sign', has('mac') ? '❌ ' : 'E')
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info)
+        return ''
+    endif
+    let errmsgs = []
+    if get(info, 'error', 0)
+        call add(errmsgs, error_sign . info['error'])
+    endif
+    return join(errmsgs, ' ')
+endfunction
+
+function! common#functions#CocWarn() abort
+    if !common#functions#HasPlug('coc.nvim')
+        return ""
+    endif
+    let warning_sign = get(g:, 'coc_status_warning_sign')
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info)
+        return ''
+    endif
+    let warnmsgs = []
+    if get(info, 'warning', 0)
+        call add(warnmsgs, warning_sign . info['warning'])
+    endif
+    return join(warnmsgs, ' ')
+endfunction
+
+function! common#functions#CocFixes() abort
+    if !common#functions#HasPlug('coc.nvim')
+        return ""
+    endif
+    let b:coc_line_fixes = get(get(b:, 'coc_quickfixes', {}), line('.'), 0)
+    return b:coc_line_fixes > 0 ? printf('%d ', b:coc_line_fixes) : ''
+endfunction
+
+function! common#functions#CocStatus() abort
+    if !common#functions#HasPlug('coc.nvim')
+        return ""
+    endif
+    return coc#status()
 endfunction

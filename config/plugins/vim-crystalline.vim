@@ -1,47 +1,6 @@
 set laststatus=2
 set showtabline=2
 
-function! CryCocError()
-    if !common#functions#HasPlug('coc.nvim')
-        let error_sign = get(g:, 'coc_status_error_sign', has('mac') ? '❌ ' : 'E')
-        let info = get(b:, 'coc_diagnostic_info', {})
-        if empty(info)
-            return ''
-        endif
-        let errmsgs = []
-        if get(info, 'error', 0)
-            call add(errmsgs, error_sign . info['error'])
-        endif
-        return join(errmsgs, ' ')
-    endif
-    return ""
-endfunction
-
-function! CryCocWarn() abort
-    if !common#functions#HasPlug('coc.nvim')
-        let warning_sign = get(g:, 'coc_status_warning_sign')
-        let info = get(b:, 'coc_diagnostic_info', {})
-        if empty(info)
-            return ''
-        endif
-        let warnmsgs = []
-        if get(info, 'warning', 0)
-            call add(warnmsgs, warning_sign . info['warning'])
-        endif
-        return join(warnmsgs, ' ')
-    endif
-
-    return ""
-endfunction
-
-function! CryCocFixes() abort
-    if common#functions#HasPlug('coc.nvim')
-        let b:coc_line_fixes = get(get(b:, 'coc_quickfixes', {}), line('.'), 0)
-        return b:coc_line_fixes > 0 ? printf('%d ', b:coc_line_fixes) : ''
-    endif
-    return ""
-endfunction
-
 function! StatusLine(current, width)
 
     let l:f_list = ["coc-explorer", "defx", "vista", "nerdtree"]
@@ -59,9 +18,9 @@ function! StatusLine(current, width)
     endif
 
     let l:s .= ' %f%h%w%m%r '
-    if a:current
-        let l:s .= crystalline#right_sep('', 'Fill') . ' %{common#functions#GitBranch()} %{common#functions#GitCount()}'
-    endif
+    " if a:current
+        " let l:s .= crystalline#right_sep('', 'Fill') . ' %{common#functions#GitBranch()} %{common#functions#GitCount()}'
+    " endif
 
     if common#functions#HasPlug("coc.nvim")
         let l:s .= " %{coc#status()}%{get(b:, 'coc_current_function', '')}"
@@ -78,11 +37,11 @@ function! StatusLine(current, width)
         let l:s .= ' '
     endif
 
-    " let l:s .= crystalline#left_sep('', 'Fill') . ' %{CryCocWarn()}'
+    " let l:s .= crystalline#left_sep('', 'Fill') . ' %{common#functions#CocWarn()}'
     " let l:s .= crystalline#left_mode_sep('')
-    " let l:s .= crystalline#left_sep('', 'Fill') . ' %{CryCocError()}'
+    " let l:s .= crystalline#left_sep('', 'Fill') . ' %{common#functions#CocError()}'
     " let l:s .= crystalline#left_mode_sep('')
-    " let l:s .= crystalline#left_sep('', 'Fill') . ' %{CryCocFixes()}'
+    " let l:s .= crystalline#left_sep('', 'Fill') . ' %{common#functions#CocFixes()}'
     " let l:s .= crystalline#left_mode_sep('')
 
     return l:s

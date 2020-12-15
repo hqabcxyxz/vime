@@ -20,14 +20,20 @@ function! common#common#init() abort
     " 撤销记录目录
     let g:undo_dir = g:cache_root_path . 'undo/'
 
+    let g:os = systemlist('uname -s')[0]
+    let g:arch = systemlist('uname -m')[0]
+
     " tmux配置文件目录
     let g:tmux_config_path = $HOME . '/.tmux.conf'
 
     " 脚本目录
-    let g:scripts_root_path = g:vim_root_path . "/scripts"
+    let g:scripts_root_path = g:vim_root_path . "/scripts/"
 
     let g:ruby_host_prog='/usr/bin/ruby'
     " wiki笔记根目录
-    let g:vimwiki_path = $HOME . '/Documents/wiki'
+    let g:vimwiki_path = $HOME . '/Documents/wiki/'
+
+    " 快速note文件
+    let g:quicknote_file = g:vimwiki_path . '/quicknote.md'
 endfunction
 

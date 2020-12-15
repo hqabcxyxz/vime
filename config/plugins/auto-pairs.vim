@@ -16,5 +16,5 @@ augroup vime_auto_paris_group
     au FileType rust let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'})
     " add <!-- --> pair and remove '{' for html file
     au FileType html let b:AutoPairs = AutoPairsDefine({'<!--' : '-->'}, ['{'])
-    au FileType md   let b:AutoPairs = AutoPairsDefine({'```:```'})
+    au FileType md   let b:AutoPairs = AutoPairsDefine({'```':'```'})
 augroup END

@@ -31,14 +31,14 @@ inoremap <silent><expr> <S-TAB>
     \ "\<C-h>"
 
 " alt j选择下一个补全
-inoremap <silent><expr> <m-j>
-    \ pumvisible() ? "\<C-n>" : "\<C-R>=coc#rpc#request('snippetNext', [])\<cr>"
-    " \ pumvisible() ? "\<C-n>" : return
+" inoremap <silent><expr> <m-j>
+    " \ pumvisible() ? "\<C-n>" : "\<C-R>=coc#rpc#request('snippetNext', [])\<cr>"
+    " " \ pumvisible() ? "\<C-n>" : return
 
-" alt k选择上一个补全
-inoremap <silent><expr> <m-k>
-    \ pumvisible() ? "\<C-p>" : "\<C-R>=coc#rpc#request('snippetPrev', [])\<cr>"
-    " \ pumvisible() ? "\<C-p>" : return
+" " alt k选择上一个补全
+" inoremap <silent><expr> <m-k>
+    " \ pumvisible() ? "\<C-p>" : "\<C-R>=coc#rpc#request('snippetPrev', [])\<cr>"
+    " " \ pumvisible() ? "\<C-p>" : return
 
 " down 选择下一个补全
 inoremap <silent><expr> <down>
@@ -96,7 +96,9 @@ nnoremap <silent> <space>k :call CocActionAsync('showSignatureHelp')<CR>
 au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 
 " 格式化代码
-command! -nargs=0 Format :call CocAction('format')
+if !common#functions#HasPlug('neoformat')
+    command! -nargs=0 Format :call CocAction('format')
+endif
 
 " 文档块支持，比如删除条件，函数等
 " 功能不如treesitter，如果不存在treesitter才使用coc
@@ -124,12 +126,7 @@ if common#functions#HasPlug('coc-fzf')
     nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 else
     " Show all diagnostics
-    if common#functions#HasPlug('fzf-preview.vim')
-        nnoremap <silent> <space>a  :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<cr>
-        nnoremap <silent> <space>A  :<C-u>CocCommand fzf-preview.CocDiagnostics<cr>
-    else
-        nnoremap <silent> <space>a  :<C-u>CocList --normal diagnostics<cr>
-    endif
+    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
     " Manage extensions
     " nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
     nnoremap <silent> <space>o  :<C-u>CocList --auto-preview outline<cr>
@@ -170,6 +167,7 @@ endif
 """""""""""""""""""""""
 
 function! s:lc_coc_highlight() abort
+    " 取消csv的高亮
     call coc#config("highlight.disableLanguages", ["csv"])
     " 高亮当前光标下的所有单词
     au CursorHold * silent call CocActionAsync('highlight')
@@ -205,6 +203,8 @@ function! s:lc_coc_lists() abort
     if common#functions#HasPlug('fzf.vim')
         \ || common#functions#HasPlug('LeaderF')
         \ || common#functions#HasPlug('vim-clap')
+        \ || common#functions#HasPlug('fzf-preview.vim')
+        \ || common#functions#HasCocPlug('coc-fzf-preview')
         return
     endif
 
@@ -228,6 +228,9 @@ function! s:lc_coc_lists() abort
     nnoremap <silent> <M-m> :CocList marks<CR>
     nnoremap <silent> <M-M> :CocList maps<CR>
     nnoremap <silent> <M-w> :CocList windows<CR>
+    nnoremap <silent> <M-y> :CocList yank<CR>
+    nnoremap <silent> <F8> :CocList locationlist<CR>
+    nnoremap <silent> <F9> :CocList quickfix<CR>
 endfunction
 
 function! s:lc_coc_yank() abort
@@ -287,6 +290,13 @@ function! s:lc_coc_prettier() abort
     call coc#config('prettier.tabWidth', 4)
 endfunction
 
+function! s:lc_coc_vimlsp() abort
+    let g:markdown_fenced_languages = [
+        \ 'vim',
+        \ 'help'
+    \ ]
+endfunction
+
 function! s:lc_coc_git() abort
     call coc#config('git.addGBlameToBufferVar', v:true)
     call coc#config('git.addGBlameToVirtualText', v:true)
@@ -307,6 +317,7 @@ function! s:lc_coc_git() abort
     nnoremap <silent> <leader>gj <Plug>(coc-git-nextchunk)
     " 显示光标处的修改信息
     nnoremap <silent> <leader>gp <esc>:CocCommand git.chunkInfo<cr>
+    " 撤销当前块的修改
     nnoremap <silent> <leader>gu <esc>:CocCommand git.chunkUndo<cr>
     nnoremap <silent> <leader>gh <esc>:CocCommand git.chunkStage<cr>
 endfunction
@@ -314,8 +325,8 @@ endfunction
 function! s:lc_coc_snippets() abort
     call coc#config("snippets.ultisnips.enable", v:true)
     call coc#config("snippets.ultisnips.directories", [
-                \ 'UltiSnips',
-                \ 'gosnippets/UltiSnips'
+                \ g:other_config_root_path . '/UltiSnips',
+                \ g:other_config_root_path . '/gosnippets/UltiSnips',
             \ ])
     call coc#config("snippets.extends", {
                 \ 'cpp': ['c', 'cpp'],
@@ -324,7 +335,7 @@ function! s:lc_coc_snippets() abort
 endfunction
 
 function! s:lc_coc_python() abort
-    call coc#config("python.jediEnabled", v:false)
+    call coc#config("python.jediEnabled", v:true)
     call coc#config("python.linting.enabled", v:true)
     call coc#config("python.linting.pylintEnabled", v:true)
 endfunction
@@ -338,10 +349,54 @@ function! s:lc_coc_rainbow_fart() abort
     call coc#config("rainbow-fart.ffplay", "ffplay")
 endfunction
 
+function! s:lc_coc_fzf_preview() abort
+    if common#functions#HasPlug('fzf.vim')
+        \ || common#functions#HasPlug('LeaderF')
+        \ || common#functions#HasPlug('vim-clap')
+        \ || common#functions#HasPlug('fzf-preview.vim')
+        return
+    endif
+
+    " let g:_yankround_cache = g:cache_root_path . "/coc/yank"
+
+    " TODO 重新写定义
+    " 行为要一致
+    function s:cocFzfPreviewWithWiki(query) abort
+        if empty(a:query) && &ft ==? 'vimwiki'
+            exec "CocCommand fzf-preview.DirectoryFiles " . g:vimwiki_path
+        else
+            exec "CocCommand fzf-preview.DirectoryFiles " . a:query
+        endif
+    endfunction
+    nnoremap <silent> <M-f> :call <SID>cocFzfPreviewWithWiki("")<CR>
+    nnoremap <silent> <M-F> :call <SID>cocFzfPreviewWithWiki($HOME)<CR>
+    nnoremap <silent> <M-b> :<c-u>CocCommand fzf-preview.AllBuffers<CR>
+    nnoremap <silent> <M-c> :<c-u>CocCommand fzf-preview.CommandPalette<CR>
+    nnoremap <silent> <M-C> :<c-u>CocCommand fzf-preview.Changes<CR>
+    " tags, 需要先generate tags
+    if common#functions#HasPlug('vista.vim')
+        nnoremap <silent> <M-t> :<c-u>CocCommand fzf-preview.VistaBufferCtags<cr>
+        nnoremap <silent> <M-T> :<c-u>CocCommand fzf-preview.VistaCtags<cr>
+    else
+        nnoremap <silent> <M-t> :<c-u>CocCommand fzf-preview.BufferTags<cr>
+        nnoremap <silent> <M-T> :<c-u>CocCommand fzf-preview.Ctags<cr>
+    endif
+    nnoremap <silent> <M-s> :<c-u>CocCommand fzf-preview.ProjectGrep<cr>
+    nnoremap <silent> ? :<c-u>CocCommand fzf-preview.Lines<cr>
+    nnoremap <silent> <M-r> :<c-u>CocCommand fzf-preview.MruFiles<CR>
+    nnoremap <silent> <M-m> :CocCommand fzf-preview.Marks<CR>
+    " nnoremap <silent> <M-M> :CocList maps<CR>
+    nnoremap <silent> <M-y> :<c-u>CocCommand fzf-preview.Yankround<CR>
+    nnoremap <silent> <M-J> :<c-u>CocCommand fzf-preview.Jumps<CR>
+
+    nnoremap <silent> <F8> :<c-u>CocCommand fzf-preview.QuickFix<CR>
+    nnoremap <silent> <F9> :<c-u>CocCommand fzf-preview.LocationList<CR>
+endfunction
+
 function! s:lc_coc_explorer() abort
     let g:coc_explorer_global_presets = {
         \   '.vim': {
-        \      'root-uri': '~/.vim',
+        \      'root-uri': g:vim_root_path,
         \   },
         \   'floating': {
         \      'position': 'floating',
@@ -412,8 +467,8 @@ function! s:lc_coc_explorer() abort
       \ 'v': ['toggleSelection', 'normal:j'],
       \ 'V': ['toggleSelection', 'normal:k'],
       \ '*': 'toggleSelection',
-      \ 'w': 'open:split',
-      \ 'W': 'open:vsplit',
+      \ '<c-s>': 'open:split',
+      \ '<c-v>': 'open:vsplit',
       \ 't': 'open:tab',
       \ 'dd': 'cutFile',
       \ 'Y': 'copyFile',
@@ -424,7 +479,7 @@ function! s:lc_coc_explorer() abort
       \ 'yp': 'copyFilepath',
       \ 'yn': 'copyFilename',
       \ 'gp': 'preview:labeling',
-      \ 'x': 'systemExecute',
+      \ '<M-x>': 'systemExecute',
       \ 'f': 'search',
       \ 'F': 'searchRecursive',
       \ '<tab>': 'actionMenu',
@@ -473,9 +528,12 @@ let s:coc_config_functions = {
             \ 'coc-explorer': function('<SID>lc_coc_explorer'),
             \ 'coc-pyright': function('<SID>lc_coc_pyright'),
             \ 'coc-ci': function('<SID>lc_coc_ci'),
+            \ 'coc-vimlsp': function('<SID>lc_coc_vimlsp'),
+            \ 'coc-fzf-preview': function('<SID>lc_coc_fzf_preview'),
             \ }
 
 " TODO 更改调用方式
+" 调用插件的配置函数
 for extension in g:coc_global_extensions
     call get(s:coc_config_functions, extension, function('<SID>tmp'))()
 endfor
