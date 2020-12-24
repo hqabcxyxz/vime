@@ -67,7 +67,9 @@ nmap <silent> <M-j> <Plug>(coc-diagnostic-next)
 nmap <silent> <M-k> <Plug>(coc-diagnostic-prev)
 
 " 跳转到定义
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gdd <Plug>(coc-definition)
+nmap <silent> gdt :call CocAction('jumpDefinition', 'tabe')<CR>
+nmap <silent> gds :call CocAction('jumpDefinition', 'vsplit')<CR>
 " 跳转到类型定义
 nmap <silent> gy <plug>(coc-type-definition)
 " 跳转到实现

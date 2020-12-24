@@ -10,75 +10,75 @@ endsnippet
 
 snippet beautify_xml_root "美化xml的节点,直接在原节点上改" b
 def beautify_xml_root(elem,level=0):
-	r'''美化xml的节点,直接在原节点上改
+    r'''美化xml的节点,直接在原节点上改
 
-	Parameters
-	----------
-	elem : (ET.Element)
-		xml的节点,一般是最顶级的节点
+    Parameters
+    ----------
+    elem : (ET.Element)
+        xml的节点,一般是最顶级的节点
 
-	level : (int = 0)
-		节点的等级,默认为0,最顶级节点
+    level : (int = 0)
+        节点的等级,默认为0,最顶级节点
 
-	Examples:
-	----------
-		root=ET.Element('annotation')
-		beautify_xml_root(root)
-		ET.dump(root)
-	'''
-	i='\r\n'+level*'\t'
-	if len(elem):
-		if not elem.text or not elem.text.strip():
-			elem.text=i+'\t'
-		if not elem.tail or not elem.tail.strip():
-			elem.tail=i
-		if level ==0:
-			elem.tail=''
-		for elem in elem:
-			beautify_xml_root(elem,level+1)
-		if not elem.tail or not elem.tail.strip():
-			elem.tail =i
-	else:
-		if level and (not elem.tail or not elem.tail.strip()):
-			elem.tail=i
+    Examples:
+    ----------
+        root=ET.Element('annotation')
+        beautify_xml_root(root)
+        ET.dump(root)
+    '''
+    i='\r\n'+level*'\t'
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text=i+'\t'
+        if not elem.tail or not elem.tail.strip():
+            elem.tail=i
+        if level ==0:
+            elem.tail=''
+        for elem in elem:
+            beautify_xml_root(elem,level+1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail =i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail=i
 
 endsnippet
 
 snippet timeblock "计算代码块运行时间" b
 @contextmanager
 def timeblock(label:str = '\033[1;34m${1:Spend time}:\033[0m'):
-	r'''上下文管理测试代码块运行时间,需要
-		import time
-		from contextlib import contextmanager
-	'''
-	start = time.perf_counter()
-	try:
-		yield
-	finally:
-		end = time.perf_counter()
-		print('\033[1;34m{} : {}\033[0m'.format(label, end - start))
+    r'''上下文管理测试代码块运行时间,需要
+        import time
+        from contextlib import contextmanager
+    '''
+    start = time.perf_counter()
+    try:
+        yield
+    finally:
+        end = time.perf_counter()
+        print('\033[1;34m{} : {}\033[0m'.format(label, end - start))
 endsnippet
 
 snippet timefunc "计算函数运行时间" b
 def timethis(func):
-	r'''装饰器用于测试函数时间,需要
-		import time
-		from functools import wraps
+    r'''装饰器用于测试函数时间,需要
+        import time
+        from functools import wraps
 
-	Examples
-	----------
-		@timethis
-		def my_func():
-			....
-	'''
-	@wraps(func)
-	def wrapper(*args, **kwargs):
-		start = time.perf_counter()
-		r = func(*args, **kwargs)
-		end = time.perf_counter()
-		print('{}.{} : {}'.format(func.__module__, func.__name__, end - start))
-		return r
-	return wrapper
+    Examples
+    ----------
+        @timethis
+        def my_func():
+            ....
+    '''
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        r = func(*args, **kwargs)
+        end = time.perf_counter()
+        print('{}.{} : {}'.format(func.__module__, func.__name__, end - start))
+        return r
+    return wrapper
 endsnippet
 
 snippet flattenlist "将多维列表展开成一维" b
@@ -87,24 +87,33 @@ endsnippet
 
 snippet get_all_file_path "获得特定目录下所有的文件的路径列表" b
 def get_all_${1:file}_path(${2:file_dir}:str,filter_:tuple=(${3:'.jpg'},)) -> list:
-	#遍历文件夹下所有的${1:file}
-	return [os.path.join(maindir,filename) for maindir,_,file_name_list in os.walk(${2:file_dir}) \
-			for filename in file_name_list \
-			if os.path.splitext(filename)[1] in filter_ ]
+    #遍历文件夹下所有的${1:file}
+    return [os.path.join(maindir,filename) for maindir,_,file_name_list in os.walk(${2:file_dir}) \
+            for filename in file_name_list \
+            if os.path.splitext(filename)[1] in filter_ ]
 endsnippet
 
 snippet if__name__ "添加if __name__ == '__main__'" b
 if __name__=="__main__":
-	${1:function}
+    ${1:function}
 endsnippet
 
 snippet md5sum "计算字符串或者文件的md5" b
 def md5sum(count_str:str) -> str:
-	m = hashlib.md5()
-	if os.path.isfile(count_str):
-		with open(count_str,'rb') as frb:
-			m.update(frb.read())
-	else:
-		m.update(count_str.encode('utf-8'))
-	return m.hexdigest()
+    m = hashlib.md5()
+    if os.path.isfile(count_str):
+        with open(count_str,'rb') as frb:
+            m.update(frb.read())
+    else:
+        m.update(count_str.encode('utf-8'))
+    return m.hexdigest()
+endsnippet
+
+snippet cvdebug "添加一些用来debug图片或者丈量的函数" b
+import matplotlib.pyplot as plt
+
+def pdb_show_img(img):
+    plt.imshow(img)
+    plt.show()
+
 endsnippet
