@@ -31,14 +31,14 @@ inoremap <silent><expr> <S-TAB>
     \ "\<C-h>"
 
 " alt j选择下一个补全
-" inoremap <silent><expr> <m-j>
-    " \ pumvisible() ? "\<C-n>" : "\<C-R>=coc#rpc#request('snippetNext', [])\<cr>"
-    " " \ pumvisible() ? "\<C-n>" : return
+inoremap <silent><expr> <m-j>
+    \ pumvisible() ? "\<C-n>" : "\<C-R>=coc#rpc#request('snippetNext', [])\<cr>"
+    " \ pumvisible() ? "\<C-n>" : return
 
 " " alt k选择上一个补全
-" inoremap <silent><expr> <m-k>
-    " \ pumvisible() ? "\<C-p>" : "\<C-R>=coc#rpc#request('snippetPrev', [])\<cr>"
-    " " \ pumvisible() ? "\<C-p>" : return
+inoremap <silent><expr> <m-k>
+    \ pumvisible() ? "\<C-p>" : "\<C-R>=coc#rpc#request('snippetPrev', [])\<cr>"
+    " \ pumvisible() ? "\<C-p>" : return
 
 " down 选择下一个补全
 inoremap <silent><expr> <down>
@@ -315,8 +315,8 @@ function! s:lc_coc_git() abort
     call coc#config('git.changeRemovedSign.text', '▋')
 
     " 导航到修改块
-    nnoremap <silent> <leader>gk <Plug>(coc-git-prevchunk)
-    nnoremap <silent> <leader>gj <Plug>(coc-git-nextchunk)
+    nmap <leader>gk <Plug>(coc-git-prevchunk)
+    nmap <leader>gj <Plug>(coc-git-nextchunk)
     " 显示光标处的修改信息
     nnoremap <silent> <leader>gp <esc>:CocCommand git.chunkInfo<cr>
     " 撤销当前块的修改

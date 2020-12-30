@@ -8,5 +8,17 @@ let g:vista#renderer#icons = {
     \   "function": "\uf794",
     \   "variable": "\uf71b",
     \  }
+let g:vista_sidebar_width = 50
 
-nnoremap <F3> :Vista!!<CR>
+function s:vista_toggle() abort
+    if &ft == "tex"
+        if common#functions#HasPlug('vimtex')
+            exec "VimtexTocToggle"
+        endif
+    else
+        exec "Vista!!"
+    endif
+endfunction
+
+" nnoremap <F3> :Vista!!<CR>
+nnoremap <F3> :call <SID>vista_toggle()<CR>

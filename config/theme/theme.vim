@@ -98,6 +98,7 @@ endif
 
 " autocmd InsertEnter * hi CursorLineNr ctermbg=blue
 " autocmd InsertLeave * hi CursorLineNr ctermbg=green
+silent! colorscheme edge
 
 " coc 美化
 if common#functions#HasPlug('coc.nvim')

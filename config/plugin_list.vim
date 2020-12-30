@@ -5,6 +5,8 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'junegunn/fzf', { 'do': {-> fzf#install()} }
 Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/fzf.vim' | Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
+" c debug
+Plug 'puremourning/vimspector'
 " git插件
 "Plug 'tpope/vim-fugitive', {'on': ['Gwrite', 'Gcommit', 'Gread', 'Gdiff', 'Gblame']}
 "\ | Plug 'rbong/vim-flog'
@@ -55,9 +57,15 @@ Plug 'sainnhe/forest-night'
 Plug 'itchyny/lightline.vim'
 " Plug 'liuchengxu/eleline.vim'
 " 彩虹括号
-"Plug 'luochen1990/rainbow'
-Plug 'kien/rainbow_parentheses.vim'
 "" 函数列表
+if has("nvim")
+    " 使用treesitter的彩虹括号
+    Plug 'p00f/nvim-ts-rainbow'
+else
+    Plug 'kien/rainbow_parentheses.vim'
+    " Plug 'luochen1990/rainbow'
+endif
+" 函数列表
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
 "" 自动补全括号
 "Plug 'jiangmiao/auto-pairs'
@@ -182,6 +190,7 @@ endif
 "Plug 'lambdalisue/suda.vim'
 "Plug 'fgheng/ResizeWindow.vim'
 "Plug 'tyru/open-browser.vim'
+"Plug 'ojroques/vim-scrollstatus'
 
 " coc插件列表，可根据需要进行删减
 let g:coc_global_extensions = [
