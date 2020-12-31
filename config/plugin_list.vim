@@ -60,7 +60,8 @@ Plug 'itchyny/lightline.vim'
 "" 函数列表
 if has("nvim")
     " 使用treesitter的彩虹括号
-    Plug 'p00f/nvim-ts-rainbow'
+    Plug 'kien/rainbow_parentheses.vim'
+    " Plug 'p00f/nvim-ts-rainbow'
 else
     Plug 'kien/rainbow_parentheses.vim'
     " Plug 'luochen1990/rainbow'
@@ -173,7 +174,7 @@ endif
 "\ | Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 "Plug 'markonm/traces.vim'
 "" 语法检查
-"Plug 'rhysd/vim-grammarous', {'for': ['markdown', 'vimwiki', 'md', 'tex']}
+Plug 'rhysd/vim-grammarous', {'for': ['markdown', 'vimwiki', 'md', 'tex']}
 " 首先需要在config/plugin_list.vim中增加插件
 "Plug 'matze/vim-move', {'on': [
 "            \ '<Plug>MoveBlockDown',
