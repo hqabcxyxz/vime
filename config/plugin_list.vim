@@ -66,6 +66,8 @@ else
     Plug 'kien/rainbow_parentheses.vim'
     " Plug 'luochen1990/rainbow'
 endif
+" 高亮FIXME,TODO等特殊字符
+Plug 'sakshamgupta05/vim-todo-highlight',{'for': ['c', 'h', 'cpp', 'python', 'go', 'java']}
 " 函数列表
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
 "" 自动补全括号
