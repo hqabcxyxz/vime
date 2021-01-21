@@ -95,7 +95,7 @@ Plug 'easymotion/vim-easymotion'
 "" 对齐
 "Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
 " 对齐线
-Plug 'Yggdroot/indentLine', {'for': ['c', 'h', 'cpp', 'python', 'go', 'java', 'vim']}
+Plug 'Yggdroot/indentLine', {'on': 'IndentLinesEnable'}
 "" 多光标
 "Plug 'mg979/vim-visual-multi'
 "" csv插件
@@ -190,10 +190,13 @@ Plug 'rhysd/vim-grammarous', {'for': ['markdown', 'vimwiki', 'md', 'tex']}
 "    Plug 'ryanoasis/vim-devicons'
 "endif
 " 忘记sudo?使用sudowrite或sw
-"Plug 'lambdalisue/suda.vim'
-"Plug 'fgheng/ResizeWindow.vim'
-"Plug 'tyru/open-browser.vim'
-"Plug 'ojroques/vim-scrollstatus'
+Plug 'lambdalisue/suda.vim'
+Plug 'fgheng/ResizeWindow.vim'
+Plug 'tyru/open-browser.vim'
+" Plug 'ojroques/vim-scrollstatus'
+if has('nvim')
+    Plug 'dstein64/nvim-scrollview'
+endif
 
 " coc插件列表，可根据需要进行删减
 let g:coc_global_extensions = [

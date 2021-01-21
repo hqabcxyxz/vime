@@ -23,7 +23,7 @@ function! LightlineLineinfo() abort
     \      &filetype ==? 'vista'            ? ' ' :
     \      &filetype =~? '\v^mundo(diff)?$' ? ' ' :
     \      s:lightline_is_lean() || s:lightline_is_plain() ? ' '  :
-    \      printf(' %d%% ☰ %d:%d', 100*line('.')/line('$'),  line('.'), col('.'))
+    \      printf(' %3ld%% ☰ %3ld:%4ld', 100*line('.')/line('$'),  line('.'), col('.'))
 endfunction
 
 function! LightLineGitInfo()abort
@@ -76,4 +76,3 @@ let g:lightline = {
     \ 'separator': { 'left': "\ue0b8", 'right': "\ue0ba"},
     \ 'subseparator': { 'left': "\ue0b9", 'right': "\ue0bb"}
 \ }
-"\ 'colorscheme': 'srcery',
