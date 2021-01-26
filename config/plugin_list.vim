@@ -192,6 +192,7 @@ Plug 'rhysd/vim-grammarous', {'for': ['markdown', 'vimwiki', 'md', 'tex']}
 " 忘记sudo?使用sudowrite或sw
 Plug 'lambdalisue/suda.vim'
 Plug 'fgheng/ResizeWindow.vim'
+" Plug 'simeji/winresizer'
 Plug 'tyru/open-browser.vim'
 " Plug 'ojroques/vim-scrollstatus'
 if has('nvim')
