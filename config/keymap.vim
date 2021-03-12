@@ -1,5 +1,8 @@
 " 先导键设置为空格键
-let mapleader = "\<space>"
+"  若使用了vim-which-key 插件 那么插件设置和这里要同步
+let g:mapleader = "\<Space>"
+let g:maplocalleader = '\<M>'
+
 " 窗口相关快捷键
 "noremap <c-h> <C-w>h
 "noremap <c-j> <C-w>j
@@ -73,7 +76,7 @@ augroup vime_keymap_group
 augroup END
 
 " 新建终端
-nnoremap <leader>tt :terminal<cr>
+"nnoremap <leader>tt :terminal<cr>
 
 " 插入模式下的一些快捷键
 inoremap <M-o> <esc>o
@@ -111,8 +114,8 @@ if !common#functions#HasPlug('vim-airline') && !common#functions#HasPlug('vim-cr
     tnoremap  <M-l> <c-\><c-n>:call common#functions#MoveTabOrBuf(1)<cr>
     tnoremap  <M-h> <c-\><c-n>:call common#functions#MoveTabOrBuf(0)<CR>
 endif
-nnoremap <silent> <leader>tn :tabnew<cr>
-nnoremap <silent> <leader>tc :tabclose<cr>
+"nnoremap <silent> <leader>tn :tabnew<cr>
+"nnoremap <silent> <leader>tc :tabclose<cr>
 nnoremap <silent> <M-L> :tabmove +1<cr>
 nnoremap <silent> <M-H> :tabmove -1<cr>
 tnoremap <silent> <M-L> <c-\><c-n>:tabmove +1<cr>

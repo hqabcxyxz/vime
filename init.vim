@@ -1,9 +1,5 @@
 "为了兼容vscode-neovim
 if !exists('g:vscode')
-    if has("nvim")
-        let g:python_host_prog = "/usr/bin/python2"
-        let g:python3_host_prog = "/usr/bin/python3"
-    endif
     " 初始化一些全局变量
     call common#common#init()
 

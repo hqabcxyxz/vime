@@ -79,7 +79,7 @@ nmap <silent> gr <plug>(coc-references)
 " 重构refactor,需要lsp支持
 nmap <silent> <space>rf <Plug>(coc-refactor)
 " 修复代码
-nmap <silent> <space>f  <Plug>(coc-fix-current)
+nmap <silent> <space>cfix  <Plug>(coc-fix-current)
 " 变量重命名
 nmap <silent> <space>rn <Plug>(coc-rename)
 
@@ -278,7 +278,11 @@ function! s:lc_coc_todolist() abort
 endfunction
 
 function! s:lc_coc_clangd() abort
+    "启用语义高亮
     call coc#config('clangd.semanticHighlighting', v:true)
+
+    nmap <silent> f10 :<C-u>CocCommand clangd.switchSourceHeader<cr>
+    "nmap <silent> K   :<C-u>CocCommand clangd.symbolInfo<cr>
 endfunction
 
 function! s:lc_coc_kite() abort
@@ -439,7 +443,7 @@ function! s:lc_coc_explorer() abort
     " nmap <space>rd :CocCommand explorer --preset .vim<CR>
     nmap <F2> :CocCommand explorer<CR>
     if !common#functions#HasPlug('ranger.vim')
-        nmap <leader>f :CocCommand explorer --preset floating<CR>
+        nmap <leader>F :CocCommand explorer --preset floating<CR>
     endif
 
     augroup vime_coc_explorer_group

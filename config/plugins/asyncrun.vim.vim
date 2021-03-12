@@ -2,3 +2,4 @@
 " https://github.com/skywind3000/asyncrun.vim/wiki/Customize-Runner
 " https://github.com/voldikss/vim-floaterm#asynctasksvim
 let g:asyncrun_open = 6
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']

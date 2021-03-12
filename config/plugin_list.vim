@@ -5,6 +5,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'junegunn/fzf', { 'do': {-> fzf#install()} }
 Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/fzf.vim' | Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " c debug
 Plug 'puremourning/vimspector'
 " git插件
@@ -16,6 +17,10 @@ if has('nvim') || has('patch-8.0.902')
 else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
+" 键位提示
+"Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'liuchengxu/vim-which-key'
+
 "" 注释插件
 "Plug 'scrooloose/nerdcommenter'
 ""更加轻量的注释插件
@@ -166,6 +171,13 @@ if has('nvim')
 else
     Plug 'RRethy/vim-hexokinase',  { 'do': 'make hexokinase' }
 endif
+
+"" C++ 相关
+"Plug 'ludovicchabant/vim-gutentags',{'for': ['c', 'h', 'cpp']}
+"Plug 'skywind3000/gutentags_plus',{'for': ['c','h','cpp']}
+"Plug 'jsfaint/gen_tags.vim',{'for':['c','h','cpp']}
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 "" 加强版的 go to file
 "Plug 'tpope/vim-apathy'
