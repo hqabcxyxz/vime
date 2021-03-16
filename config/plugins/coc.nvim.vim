@@ -19,6 +19,15 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+if has('nvim')
+    nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"                                                                                                          
+    nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"                                                                                                            
+    inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"                                                                                             
+    vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"                                                                                                            
+    vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"                                                                                                            
+endif
+
 " tab触发补全或者选择下一个补全
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<c-n>" :
@@ -77,11 +86,11 @@ nmap <silent> gi <plug>(coc-implementation)
 " 跳转到引用
 nmap <silent> gr <plug>(coc-references)
 " 重构refactor,需要lsp支持
-nmap <silent> <space>rf <Plug>(coc-refactor)
+nmap <silent> <space>crf <Plug>(coc-refactor)
 " 修复代码
 nmap <silent> <space>cfix  <Plug>(coc-fix-current)
 " 变量重命名
-nmap <silent> <space>rn <Plug>(coc-rename)
+nmap <silent> <space>crn <Plug>(coc-rename)
 
 " 使用K悬浮显示定义
 function! s:show_documentation()
@@ -116,30 +125,30 @@ if !common#functions#HasPlug('nvim-treesitter')
 endif
 
 if common#functions#HasPlug('coc-fzf')
-    nnoremap <silent> <space>A  :<C-u>CocFzfList diagnostics<CR>
-    nnoremap <silent> <space>a  :<C-u>CocFzfList diagnostics --current-buf<CR>
-    nnoremap <silent> <space>c  :<C-u>CocFzfList commands<CR>
-    nnoremap <silent> <space>e  :<C-u>CocFzfList extensions<CR>
-    nnoremap <silent> <space>l  :<C-u>CocFzfList<CR>
+    nnoremap <silent> <space>cA  :<C-u>CocFzfList diagnostics<CR>
+    nnoremap <silent> <space>ca  :<C-u>CocFzfList diagnostics --current-buf<CR>
+    nnoremap <silent> <space>cc  :<C-u>CocFzfList commands<CR>
+    nnoremap <silent> <space>ce  :<C-u>CocFzfList extensions<CR>
+    nnoremap <silent> <space>cl  :<C-u>CocFzfList<CR>
     " nnoremap <silent> <space>l  :<C-u>CocFzfList location<CR>
-    nnoremap <silent> <space>o  :<C-u>CocFzfList outline<CR>
-    nnoremap <silent> <space>O  :<C-u>CocFzfList symbols<CR>
-    nnoremap <silent> <space>s  :<C-u>CocFzfList services<CR>
-    nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
+    nnoremap <silent> <space>co  :<C-u>CocFzfList outline<CR>
+    nnoremap <silent> <space>cO  :<C-u>CocFzfList symbols<CR>
+    nnoremap <silent> <space>cs  :<C-u>CocFzfList services<CR>
+    nnoremap <silent> <space>cp  :<C-u>CocFzfListResume<CR>
 else
     " Show all diagnostics
-    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+    nnoremap <silent> <space>ca  :<C-u>CocList diagnostics<cr>
     " Manage extensions
     " nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    nnoremap <silent> <space>o  :<C-u>CocList --auto-preview outline<cr>
-    nnoremap <silent> <space>O  :<C-u>CocList --auto-preview --interactive symbols<cr>
+    nnoremap <silent> <space>co  :<C-u>CocList --auto-preview outline<cr>
+    nnoremap <silent> <space>cO  :<C-u>CocList --auto-preview --interactive symbols<cr>
     " Show commands
-    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+    nnoremap <silent> <space>cc  :<C-u>CocList commands<cr>
     " Resume latest coc list
-    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+    nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
     " nnoremap <silent> <space>s  :<C-u>CocList services<CR>
     " show coclist 早晚要放进去的
-    nnoremap <silent> <space>l  :<C-u>CocList<CR>
+    nnoremap <silent> <space>cl  :<C-u>CocList<CR>
 endif
 
 " 多光标支持，但是coc的多光标不如 vim-visual-multi，因此在没有
@@ -248,11 +257,11 @@ endfunction
 
 function! s:lc_coc_translator() abort
     " 翻译光标下的文本,在浮动窗口回显popup
-    nmap <Leader>t <Plug>(coc-translator-p)
-    vmap <Leader>t <Plug>(coc-translator-pv)
+    nmap tw <Plug>(coc-translator-p)
+    vmap tw <Plug>(coc-translator-pv)
     " echo
-    nmap <Leader>e <Plug>(coc-translator-e)
-    vmap <Leader>e <Plug>(coc-translator-ev)
+    nmap tt <Plug>(coc-translator-e)
+    vmap tt <Plug>(coc-translator-ev)
     "" 将光标下的文本替换为翻译内容replace
     "nmap <Leader>r <Plug>(coc-translator-r)
     "vmap <Leader>r <Plug>(coc-translator-rv)

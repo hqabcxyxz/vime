@@ -122,7 +122,7 @@ Plug 'pseewald/vim-anyfold'
 Plug 'mhinz/vim-startify'
 "Plug 'glepnir/dashboard-nvim'
 "" 翻译插件
-"若是coc-translator 好用了 就可以不用这个插件了
+""若是coc-translator 好用了 就可以不用这个插件了
 Plug 'voldikss/vim-translator', {'on':
     \ [
     \ '<Plug>Translate', '<Plug>TranslateV', '<Plug>TranslateW',
@@ -235,6 +235,7 @@ let g:coc_global_extensions = [
     \ 'coc-xml',
     \ 'coc-yank',
     \ 'coc-yaml',
+    \ 'coc-gitignore',
     \ ]
 
 
