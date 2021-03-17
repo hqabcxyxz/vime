@@ -3,6 +3,10 @@
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\<M>'
 
+" 解除t键的跳转功能
+noremap t <Nop>
+noremap T <Nop>
+
 " 窗口相关快捷键
 "noremap <c-h> <C-w>h
 "noremap <c-j> <C-w>j

@@ -1,6 +1,8 @@
 " 选择注释风格
 " Example:
-" let g:doge_doc_standard_python = 'numpy'
+let g:doge_doc_standard_python = 'google'
+let g:doge_doc_standard_cpp = 'doxygen_qt'
+
 " 如果想为buffer设定风格
 " :let b:doge_doc_standard = 'numpy'
 " 全部风格

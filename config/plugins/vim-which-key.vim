@@ -1,4 +1,4 @@
-set timeoutlen=100
+"set timeoutlen=100
 let g:which_key_map={}
 
 
@@ -6,6 +6,7 @@ call which_key#register('<Space>', "g:which_key_map")
 let g:mapleader = "\<Space>"
 let g:maplocalleader = '\<M>'
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <M>      :<c-u>WhichKey '<M>'<CR>
-
+vnoremap <silent> <M>      :<c-u>WhichKey '<M>'<CR>
 

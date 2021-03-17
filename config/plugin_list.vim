@@ -24,9 +24,9 @@ Plug 'liuchengxu/vim-which-key'
 "" 注释插件
 "Plug 'scrooloose/nerdcommenter'
 ""更加轻量的注释插件
-"Plug 'tyru/caw.vim'
+Plug 'tyru/caw.vim'
 "" 生成注释文档
-"Plug 'kkoomen/vim-doge', {'do': {-> doge#install()}}
+Plug 'kkoomen/vim-doge', {'do': {-> doge#install()}}
 "" 数据库
 "Plug 'tpope/vim-dadbod' | Plug 'kristijanhusak/vim-dadbod-ui' | Plug 'kristijanhusak/vim-dadbod-completion'
 "" 全局替换插件
@@ -123,12 +123,13 @@ Plug 'mhinz/vim-startify'
 "Plug 'glepnir/dashboard-nvim'
 "" 翻译插件
 ""若是coc-translator 好用了 就可以不用这个插件了
-Plug 'voldikss/vim-translator', {'on':
-    \ [
-    \ '<Plug>Translate', '<Plug>TranslateV', '<Plug>TranslateW',
-    \ '<Plug>TranslateWV', '<Plug>TranslateR','<Plug>TranslateRV',
-    \ '<Plug>TranslateX'
-    \ ]}
+Plug 'voldikss/vim-translator'
+",{'on':
+"    \ [
+"    \ '<Plug>Translate', '<Plug>TranslateV', '<Plug>TranslateW',
+"    \ '<Plug>TranslateWV', '<Plug>TranslateR','<Plug>TranslateRV',
+"    \ '<Plug>TranslateX'
+"    \ ]}
 " tmux相关插件
 if  executable("tmux") && strlen($TMUX)
     " tmux与vim窗口间导航
