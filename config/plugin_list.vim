@@ -38,28 +38,31 @@ Plug 'kkoomen/vim-doge', {'do': {-> doge#install()}}
 "Plug 'morhetz/gruvbox'
 "Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/forest-night'
-"Plug 'srcery-colors/srcery-vim'
-"Plug 'hardcoreplayers/oceanic-material'
-"Plug 'chuling/ci_dark'
-"Plug 'kristijanhusak/vim-hybrid-material'
-"Plug 'mhartington/oceanic-next'
-"Plug '986299679/space-vim-theme'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'w0ng/vim-hybrid'
-"Plug 'NLKNguyen/papercolor-theme'
-"Plug 'flrnd/candid.vim'
-"Plug 'jaredgorski/spacecamp'
-"Plug 'bluz71/vim-moonfly-colors'
-"Plug 'cormacrelf/vim-colors-github'
-"Plug 'arzg/vim-colors-xcode'
-"Plug 'sainnhe/sonokai'
-"Plug 'sonph/onehalf'
-"Plug 'dracula/vim', { 'as': 'dracula'}
-"Plug 'lifepillar/vim-solarized8'
-"" 顶栏和底栏
-"Plug 'rbong/vim-crystalline'
-" 状态栏
-Plug 'itchyny/lightline.vim'
+" Plug 'srcery-colors/srcery-vim'
+" Plug 'hardcoreplayers/oceanic-material'
+" Plug 'chuling/ci_dark'
+" Plug 'kristijanhusak/vim-hybrid-material'
+" Plug 'mhartington/oceanic-next'
+" Plug '986299679/space-vim-theme'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'w0ng/vim-hybrid'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'flrnd/candid.vim'
+" Plug 'jaredgorski/spacecamp'
+" Plug 'bluz71/vim-moonfly-colors'
+" Plug 'cormacrelf/vim-colors-github'
+" Plug 'arzg/vim-colors-xcode'
+" Plug 'sainnhe/sonokai'
+" Plug 'sonph/onehalf'
+" Plug 'ghifarit53/tokyonight-vim'
+" Plug 'sainnhe/edge'
+" Plug 'reedes/vim-colors-pencil'
+" Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
+" Plug 'arzg/vim-colors-xcode'
+" 顶栏和底栏
+" Plug 'romgrk/barbar.nvim'
+" Plug 'rbong/vim-crystalline'
+" Plug 'itchyny/lightline.vim'
 " Plug 'liuchengxu/eleline.vim'
 " 彩虹括号
 "" 函数列表
@@ -75,15 +78,17 @@ endif
 Plug 'sakshamgupta05/vim-todo-highlight',{'for': ['c', 'h', 'cpp', 'python', 'go', 'java']}
 " 函数列表
 Plug 'liuchengxu/vista.vim', {'on': ['Vista!!', 'Vista']}
-"" 自动补全括号
+" 自动补全括号
 "Plug 'jiangmiao/auto-pairs'
+"Plug 'Yggdroot/hiPairs'
 "" 快速包围
 "Plug 'tpope/vim-surround'
+"" Plug 'machakann/vim-sandwich'
 "" 重复上次的动作
 "Plug 'tpope/vim-repeat'
 "" 显示清除尾部空格
 "Plug 'ntpeters/vim-better-whitespace'
-"" 代码段
+" 代码段
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 "" 快速选择窗口
@@ -211,6 +216,7 @@ Plug 'tyru/open-browser.vim'
 if has('nvim')
     Plug 'dstein64/nvim-scrollview'
 endif
+Plug 'ernstwi/vim-secret'
 
 " coc插件列表，可根据需要进行删减
 let g:coc_global_extensions = [
