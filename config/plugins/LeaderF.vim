@@ -7,8 +7,11 @@ let g:Lf_HideHelp = 1
 " 使用leaderf file path的时候不更改目录到path
 let g:Lf_NoChdir = 1
 let g:Lf_UseCache = 0
-let g:Lf_UseVersionControlTool = 1
 let g:Lf_IgnoreCurrentBufferName = 1
+
+" 若Lf_UseVersionControlTool不为0,那么Lf生成gtags时将不会管位于版本控制以外的东西
+let g:Lf_UseVersionControlTool = 0
+" 在索引目录时默认使用的工具
 let g:Lf_DefaultExternalTool='rg'
 " popup mode
 let g:Lf_WindowPosition = 'popup'
