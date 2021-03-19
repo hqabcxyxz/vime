@@ -38,7 +38,7 @@ lua << EOF
 
         -- indent
         indent = {
-            enable = true,                      -- 基于语法树缩进
+            enable = false,                      -- 基于语法树缩进
         },
 
         -- rainbow

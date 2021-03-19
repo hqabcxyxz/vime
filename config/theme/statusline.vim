@@ -16,7 +16,7 @@ let s:disable_statusline =
 
 let s:stl = ""
 let s:stl .= "%#ToolbarButton# %{common#functions#ModeLabel()} "
-let s:stl .= "%#Substitute# %n %f%h%w%r "
+let s:stl .= "%#Substitute# %n %f%m%h%w%r "
 let s:stl .= "%#IncSearch#%{common#functions#ReadOnly()}"
 let s:stl .= "%#StatusLine# %{common#functions#GitBranch()} %{common#functions#GitCount()}"
 let s:stl .= "%{common#functions#CocStatus()} "
@@ -57,3 +57,4 @@ augroup vime_theme_statusline_group
 
     autocmd FileChangedShellPost,BufFilePost,BufNewFile,BufWritePost * redrawstatus
 augroup END
+
