@@ -62,13 +62,13 @@ Plug 'sainnhe/forest-night'
 " 顶栏和底栏
 " Plug 'romgrk/barbar.nvim'
 " Plug 'rbong/vim-crystalline'
-" Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 " Plug 'liuchengxu/eleline.vim'
 " 彩虹括号
 "" 函数列表
 if has("nvim")
     " 使用treesitter的彩虹括号
-    Plug 'kien/rainbow_parentheses.vim'
+    "Plug 'kien/rainbow_parentheses.vim'"
     " Plug 'p00f/nvim-ts-rainbow'
 else
     Plug 'kien/rainbow_parentheses.vim'
@@ -161,10 +161,11 @@ Plug 'troydm/zoomwintab.vim', {'on': 'ZoomWinTabToggle'}
 Plug 'yianwillis/vimcdoc'
 if has('nvim')
    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate','commit': '3c07232'}
-"   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-"   Plug 'nvim-treesitter/nvim-treesitter-refactor'
-"   Plug 'romgrk/nvim-treesitter-context'
+    Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/nvim-treesitter-refactor'
+    Plug 'romgrk/nvim-treesitter-context'
+    Plug 'p00f/nvim-ts-rainbow'
 else
     Plug 'sheerun/vim-polyglot'
     Plug 'octol/vim-cpp-enhanced-highlight'

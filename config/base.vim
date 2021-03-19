@@ -4,7 +4,9 @@ if &compatible
     set nocompatible
 endif
 
-if has('syntax')
+"  启用语法高亮 syntax enable仅仅针对当前文件,syntax on 针对缓冲区所有文件,
+"  但是和nvim_treesitter不兼容
+if has('syntax') && !common#functions#HasPlug('nvim-treesitter')
     syntax enable
     syntax on
 endif
@@ -12,6 +14,8 @@ endif
 if has('autocmd')
     filetype plugin indent on
 endif
+
+set tags=./.tags;,.tags
 
 if has('multi_byte')
     set encoding=utf-8

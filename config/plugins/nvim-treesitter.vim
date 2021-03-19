@@ -1,3 +1,4 @@
+"  基于语法树折叠,会覆盖已经设置的折叠选项
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
@@ -37,7 +38,7 @@ lua << EOF
 
         -- indent
         indent = {
-            enable = false
+            enable = true,                      -- 基于语法树缩进
         },
 
         -- rainbow
@@ -51,7 +52,7 @@ EOF
 
 " treesitter经常在进行一些操作之后丢失渲染，比如撤销操作等
 " 使用下面的命令可以恢复
-" function s:render() abort
-    " exec "write | edit | TSBufEnable highlight"
-" endfunc
-" nmap <silent> <F4> :call <SID>render()<cr>
+ function s:render() abort
+   " exec "write | edit | TSBufEnable highlight"
+ endfunc
+ nmap <silent> <F4> :call <SID>render()<cr>

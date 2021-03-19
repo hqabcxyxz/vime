@@ -53,9 +53,9 @@ endif
 "let g:srcery_transparent_background = 1
 "silent! colorscheme srcery
 
-" let g:forest_night_enable_italic = 1
-" let g:forest_night_transparent_background = 1
-" silent! colorscheme forest-night
+let g:forest_night_enable_italic = 1
+let g:forest_night_transparent_background = 1
+silent! colorscheme forest-night
 
 " silent! colorscheme nvcode
 " silent! colorscheme xcodedark

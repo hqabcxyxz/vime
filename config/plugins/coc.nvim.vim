@@ -292,7 +292,7 @@ function! s:lc_coc_clangd() abort
     "启用语义高亮
     call coc#config('clangd.semanticHighlighting', v:true)
 
-    nmap <silent> f10 :<C-u>CocCommand clangd.switchSourceHeader<cr>
+    nmap <silent> <F10> :<C-u>CocCommand clangd.switchSourceHeader<cr>
     "nmap <silent> K   :<C-u>CocCommand clangd.symbolInfo<cr>
 endfunction
 

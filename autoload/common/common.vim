@@ -49,6 +49,5 @@ function! common#common#init() abort
     let $GTAGSFORCECPP = 1
     " 设置gtags的配置位置
     let $GTAGSCONF = $HOME . '/.globalrc' " 此路径根据实际设置（find一下
-    set tags=./.tags;,.tags
 endfunction
 

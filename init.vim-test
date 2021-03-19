@@ -1,0 +1,9 @@
+if has('nvim')
+        let g:plug_dir=expand('~/.cache/vim/plugins/')
+else
+        let g:plug_dir=expand('~/.vim/plugged')
+endif
+" 使用vim-plug管理vim插件
+call plug#begin(g:plug_dir)
+    Plug 'ludovicchabant/vim-gutentags',{'for': ['c', 'h', 'cpp']}
+call plug#end()
