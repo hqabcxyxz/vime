@@ -76,10 +76,10 @@ set noshowmode
 set ttimeout
 set timeoutlen=500
 set ttimeoutlen=10
-"" 更新时间100ms 默认4000ms 写入swap的时间 updatetime 会导致coc翻页失效
+"" 更新时间100ms 默认4000ms 写入swap的时间  这一句有冲突的点,可能导致coc翻页失常
 set updatetime=100
 " 允许使用鼠标, normal生效，a则是全模式生效
-set mouse=a
+set mouse=n
 
 set winaltkeys=no
 " 延迟绘制，提升性能
