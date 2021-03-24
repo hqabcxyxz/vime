@@ -106,7 +106,8 @@ endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 " 函数参数的文档
 nnoremap <silent> <space>k :call CocActionAsync('showSignatureHelp')<CR>
-au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+"  这句会和set updatetime 冲突导致coc浮窗翻页冲突
+"au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 
 " 格式化代码
 if !common#functions#HasPlug('neoformat')

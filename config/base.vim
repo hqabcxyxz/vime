@@ -6,10 +6,10 @@ endif
 
 "  启用语法高亮 syntax enable仅仅针对当前文件,syntax on 针对缓冲区所有文件,
 "  但是和nvim_treesitter不兼容
-if has('syntax') && !common#functions#HasPlug('nvim-treesitter')
-    syntax enable
-    syntax on
-endif
+"if has('syntax') && !common#functions#HasPlug('nvim-treesitter')
+"    syntax enable
+"    syntax on
+"endif
 
 if has('autocmd')
     filetype plugin indent on
@@ -76,10 +76,10 @@ set noshowmode
 set ttimeout
 set timeoutlen=500
 set ttimeoutlen=10
-" 更新时间100ms 默认4000ms 写入swap的时间
+"" 更新时间100ms 默认4000ms 写入swap的时间 updatetime 会导致coc翻页失效
 set updatetime=100
 " 允许使用鼠标, normal生效，a则是全模式生效
-set mouse=n
+set mouse=a
 
 set winaltkeys=no
 " 延迟绘制，提升性能

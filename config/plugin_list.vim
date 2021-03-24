@@ -18,7 +18,6 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 " 键位提示
-"Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'liuchengxu/vim-which-key'
 
 "" 注释插件
@@ -65,7 +64,6 @@ Plug 'sainnhe/forest-night'
 "Plug 'itchyny/lightline.vim'
 " Plug 'liuchengxu/eleline.vim'
 " 彩虹括号
-"" 函数列表
 if has("nvim")
     " 使用treesitter的彩虹括号
     "Plug 'kien/rainbow_parentheses.vim'"
@@ -94,13 +92,6 @@ Plug 'SirVer/ultisnips'
 "" 快速选择窗口
 Plug 't9md/vim-choosewin',  { 'on': 'ChooseWin' }
 " 快速移动
-"Plug 'easymotion/vim-easymotion', {'on':
-"   \ [
-"   \ '<Plug>(easymotion-bd-f)', '<Plug>(easymotion-overwin-f)',
-"   \ '<Plug>(easymotion-overwin-f2)', '<Plug>(easymotion-bd-jk)',
-"   \ '<Plug>(easymotion-overwin-line)', '<Plug>(easymotion-bd-w)',
-"   \ '<Plug>(easymotion-overwin-w)', '<Plug>(easymotion-s)',
-"   \ ]}
 Plug 'easymotion/vim-easymotion'
 "" 对齐
 "Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
@@ -223,12 +214,6 @@ Plug 'ernstwi/vim-secret'
 let g:coc_global_extensions = [
     \ 'coc-clangd',
     \ 'coc-cmake',
-    \ 'coc-calc',
-    \ 'coc-ci',
-    \ 'coc-explorer',
-    \ 'coc-floaterm',
-    \ 'coc-git',
-    \ 'coc-json',
     \ 'coc-lists',
     \ 'coc-marketplace',
     \ 'coc-markmap',
@@ -244,7 +229,14 @@ let g:coc_global_extensions = [
     \ 'coc-yank',
     \ 'coc-yaml',
     \ 'coc-gitignore',
+    \ 'coc-calc',
+    \ 'coc-ci',
+    \ 'coc-explorer',
+    \ 'coc-floaterm',
+    \ 'coc-git',
+    \ 'coc-json',
     \ ]
+
 
 
 "    \ 'coc-translator',

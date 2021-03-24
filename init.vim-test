@@ -5,5 +5,7 @@ else
 endif
 " 使用vim-plug管理vim插件
 call plug#begin(g:plug_dir)
-    Plug 'ludovicchabant/vim-gutentags',{'for': ['c', 'h', 'cpp']}
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
+set updatetime=100
+set mouse=a
