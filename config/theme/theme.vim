@@ -53,13 +53,31 @@ endif
 "let g:srcery_transparent_background = 1
 "silent! colorscheme srcery
 
-let g:forest_night_enable_italic = 1
-let g:forest_night_transparent_background = 1
-silent! colorscheme forest-night
+"   可以是light或者dark
+set background=dark
+" Set contrast.
+" This configuration option should be placed before `colorscheme everforest`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:everforest_background = 'medium'
+let g:everforest_enable_italic = 1
+let g:everforest_disable_italic_comment = 1
+let g:everforest_cursor = 'green'
+let g:everforest_transparent_background = 1
+" 突出显示错误文本
+let g:everforest_diagnostic_text_highlight = 1
+" 一些插件支持显示错误提示文本等
+let g:everforest_diagnostic_line_highlight = 1
+
+" 一些插件支持高亮当前文本
+let g:everforest_current_word = 'bold'
+
+let g:everforest_better_performance = 1
+
+silent! colorscheme everforest
 
 " silent! colorscheme nvcode
 " silent! colorscheme xcodedark
-silent! colorscheme gruvbox-material
+" silent! colorscheme gruvbox-material
 " silent! colorscheme onedark
 
 " let g:one_allow_italics = 1
