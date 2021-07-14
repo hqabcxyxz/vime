@@ -220,7 +220,6 @@ let g:coc_global_extensions = [
     \ 'coc-marketplace',
     \ 'coc-markmap',
     \ 'coc-pyright',
-    \ 'coc-python',
     \ 'coc-sh',
     \ 'coc-snippets',
     \ 'coc-tabnine',
@@ -245,4 +244,5 @@ let g:coc_global_extensions = [
 "    \ 'coc-translator',
 "    \ 'coc-bookmark',
 "    \ 'coc-prettier',
+"    \ 'coc-python',
 "    \ 'coc-rainbow-fart',
