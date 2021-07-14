@@ -1,52 +1,10 @@
-" 主题theme类插件
-"Plug 'ajmwagar/vim-deus'
-"Plug 'rakr/vim-one'
-"Plug 'arcticicestudio/nord-vim'
-"Plug 'morhetz/gruvbox'
-"Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/everforest'
-" Plug 'srcery-colors/srcery-vim'
-" Plug 'hardcoreplayers/oceanic-material'
-" Plug 'chuling/ci_dark'
-" Plug 'kristijanhusak/vim-hybrid-material'
-" Plug 'mhartington/oceanic-next'
-" Plug '986299679/space-vim-theme'
-" Plug 'ayu-theme/ayu-vim'
-" Plug 'w0ng/vim-hybrid'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'flrnd/candid.vim'
-" Plug 'jaredgorski/spacecamp'
-" Plug 'bluz71/vim-moonfly-colors'
-" Plug 'cormacrelf/vim-colors-github'
-" Plug 'arzg/vim-colors-xcode'
-" Plug 'sainnhe/sonokai'
-" Plug 'sonph/onehalf'
-" Plug 'ghifarit53/tokyonight-vim'
-" Plug 'sainnhe/edge'
-" Plug 'reedes/vim-colors-pencil'
-" Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
-" Plug 'arzg/vim-colors-xcode'
-" 代码补全插件
-"" Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all'} | Plug 'airblade/vim-gitgutter'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-"" kite 插件,需要安装对应的客户端
-"Plug 'kiteco/vim-plugin'
-"" 检索
+" 检索
 Plug 'junegunn/fzf', { 'do': {-> fzf#install()} }
 Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
-Plug 'junegunn/fzf.vim' | Plug 'antoinemadec/coc-fzf',  {'branch': 'release'}
+Plug 'junegunn/fzf.vim' 
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " c debug
 Plug 'puremourning/vimspector'
-" git插件
-"Plug 'tpope/vim-fugitive', {'on': ['Gwrite', 'Gcommit', 'Gread', 'Gdiff', 'Gblame']}
-"\ | Plug 'rbong/vim-flog'
-"\ | Plug 'airblade/vim-gitgutter'
-if has('nvim') || has('patch-8.0.902')
-  Plug 'mhinz/vim-signify'
-else
-  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-endif
 " 键位提示
 Plug 'liuchengxu/vim-which-key'
 
@@ -56,10 +14,41 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'tyru/caw.vim'
 "" 生成注释文档
 Plug 'kkoomen/vim-doge', {'do': {-> doge#install()}}
-"" 数据库
+
+" 数据库
 "Plug 'tpope/vim-dadbod' | Plug 'kristijanhusak/vim-dadbod-ui' | Plug 'kristijanhusak/vim-dadbod-completion'
-"" 全局替换插件
+" 全局替换插件
 "Plug 'brooth/far.vim'
+" 主题theme类插件
+"Plug 'glepnir/zephyr-nvim'
+"Plug 'ajmwagar/vim-deus'
+"Plug 'rakr/vim-one'
+"Plug 'arcticicestudio/nord-vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'sainnhe/gruvbox-material'
+"Plug 'npxbr/gruvbox.nvim'
+Plug 'sainnhe/everforest'
+"Plug 'srcery-colors/srcery-vim'
+"Plug 'hardcoreplayers/oceanic-material'
+"Plug 'chuling/ci_dark'
+"Plug 'kristijanhusak/vim-hybrid-material'
+"Plug 'mhartington/oceanic-next'
+"Plug '986299679/space-vim-theme'
+"Plug 'ayu-theme/ayu-vim'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'NLKNguyen/papercolor-theme'
+"Plug 'flrnd/candid.vim'
+"Plug 'jaredgorski/spacecamp'
+"Plug 'bluz71/vim-moonfly-colors'
+"Plug 'cormacrelf/vim-colors-github'
+"Plug 'arzg/vim-colors-xcode'
+"Plug 'sainnhe/sonokai'
+"Plug 'sonph/onehalf'
+"Plug 'ghifarit53/tokyonight-vim'
+"Plug 'sainnhe/edge'
+"Plug 'reedes/vim-colors-pencil'
+"Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
+"Plug 'arzg/vim-colors-xcode'
 " 顶栏和底栏
 " Plug 'romgrk/barbar.nvim'
 " Plug 'rbong/vim-crystalline'
@@ -94,15 +83,25 @@ Plug 'SirVer/ultisnips'
 "" 快速选择窗口
 Plug 't9md/vim-choosewin',  { 'on': 'ChooseWin' }
 " 快速移动
-Plug 'easymotion/vim-easymotion'
-"" 对齐
+Plug 'easymotion/vim-easymotion', {'on':
+   \ [
+   \ '<Plug>(easymotion-bd-f)', '<Plug>(easymotion-overwin-f)',
+   \ '<Plug>(easymotion-overwin-f2)', '<Plug>(easymotion-bd-jk)',
+   \ '<Plug>(easymotion-overwin-line)', '<Plug>(easymotion-bd-w)',
+   \ '<Plug>(easymotion-overwin-w)', '<Plug>(easymotion-s)',
+   \ ]}
+" 对齐
 "Plug 'junegunn/vim-easy-align', {'on': ['EasyAlign', '<Plug>(EasyAlign)']}
-" 对齐线
-Plug 'Yggdroot/indentLine', {'on': 'IndentLinesEnable'}
-"" 多光标
+" 缩进线
+" Plug 'Yggdroot/indentLine', {'on': 'IndentLinesEnable'}
+if has('nvim')
+    " 缩进线
+    Plug 'glepnir/indent-guides.nvim'
+endif
+" 多光标
 "Plug 'mg979/vim-visual-multi'
-"" csv插件
-"" Plug 'chrisbra/csv.vim', {'for': 'csv'}
+" csv插件
+"Plug 'chrisbra/csv.vim', {'for': 'csv'}
 " 悬浮终端
 Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
 "" 笔记插件，支持markdown
@@ -211,38 +210,10 @@ if has('nvim')
     Plug 'dstein64/nvim-scrollview'
 endif
 Plug 'ernstwi/vim-secret'
+" 用于比较两个文件夹的不同
+"Plug 'ZSaberLv0/ZFVimDirDiff'
 
-" coc插件列表，可根据需要进行删减
-let g:coc_global_extensions = [
-    \ 'coc-clangd',
-    \ 'coc-cmake',
-    \ 'coc-lists',
-    \ 'coc-marketplace',
-    \ 'coc-markmap',
-    \ 'coc-pyright',
-    \ 'coc-sh',
-    \ 'coc-snippets',
-    \ 'coc-tabnine',
-    \ 'coc-tsserver',
-    \ 'coc-vimlsp',
-    \ 'coc-word',
-    \ 'coc-xml',
-    \ 'coc-yank',
-    \ 'coc-yaml',
-    \ 'coc-gitignore',
-    \ 'coc-calc',
-    \ 'coc-ci',
-    \ 'coc-explorer',
-    \ 'coc-floaterm',
-    \ 'coc-git',
-    \ 'coc-json',
-    \ 'coc-protobuf',
-    \ ]
-
-
-
-"    \ 'coc-translator',
-"    \ 'coc-bookmark',
-"    \ 'coc-prettier',
-"    \ 'coc-python',
-"    \ 'coc-rainbow-fart',
+" 一个使用lua写的文件管理器
+"if has('nvim')
+"  Plug 'kyazdani42/nvim-tree.lua'
+"endif

@@ -48,7 +48,7 @@ if has('nvim')
     set pumblend=20 " 提示框透明
 endif
 
-"" 主题选择
+" 主题选择
 "let g:srcery_italic = 1
 "let g:srcery_transparent_background = 1
 "silent! colorscheme srcery
@@ -150,3 +150,4 @@ if common#functions#HasPlug('coc.nvim')
         hi CocExplorerNormalFloat guibg=None
     endif
 endif
+

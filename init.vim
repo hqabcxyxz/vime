@@ -1,7 +1,9 @@
 "为了兼容vscode-neovim
 if !exists('g:vscode')
     " 初始化一些全局变量
-    call common#common#init()
+    " call common#common#init()
+    " 载入个人配置
+    exec "source " . fnamemodify($MYVIMRC, ':h') . "/config.vim"
 
     " 定义载入配置命令
     command! -nargs=1 LoadScript exec 'source ' . g:config_root_path . '<args>'
@@ -13,7 +15,7 @@ if !exists('g:vscode')
     
     " vim-plug 载入插件
     call plug#begin(get(g:, 'plugins_install_path', '~/.vim/plugin/'))
-    LoadScript plugin_list.vim
+    LoadScript layers.vim
     call plug#end()
 
     " 载入快捷键配置
