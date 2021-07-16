@@ -31,12 +31,6 @@ let g:todo_highlight_config = {
             \        'cterm_fg_color': 'white',
             \        'cterm_bg_color': '214'
             \        },
-            \    'set_trace':{
-            \        'gui_fg_color': '#ffffff',
-            \        'gui_bg_color': '#b236d8',
-            \        'cterm_fg_color': 'white',
-            \        'cterm_bg_color': '214'
-            \    },
             \}
 
 

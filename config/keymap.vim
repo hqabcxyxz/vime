@@ -12,10 +12,10 @@ noremap T <Nop>
 "noremap <c-j> <C-w>j
 "noremap <c-k> <C-w>k
 "noremap <c-l> <C-w>l
-tnoremap <c-h> <c-\><c-n><c-w>h
-tnoremap <c-j> <c-\><c-n><c-w>j
-tnoremap <c-k> <c-\><c-n><c-w>k
-tnoremap <c-l> <c-\><c-n><c-w>l
+"tnoremap <c-h> <c-\><c-n><c-w>h
+"tnoremap <c-j> <c-\><c-n><c-w>j
+"tnoremap <c-k> <c-\><c-n><c-w>k
+"tnoremap <c-l> <c-\><c-n><c-w>l
 if !common#functions#HasPlug('ResizeWindow.vim')
     " 更改窗口垂直大小
     nnoremap <M--> :resize +3<CR>
