@@ -25,7 +25,7 @@ let g:tmux_config_path = $HOME . '/.tmux.conf'
 let g:scripts_root_path = g:vim_root_path . "/scripts/"
 
 " wiki笔记根目录
-let g:vimwiki_path = $HOME . '/Documents/wiki/'
+let g:vimwiki_path = $HOME . '/document/note/'
 
 " 快速note文件
 let g:quicknote_file = g:vimwiki_path . '/quicknote.md'
