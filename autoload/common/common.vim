@@ -34,18 +34,5 @@
 
     " " 快速note文件
     " let g:quicknote_file = g:vimwiki_path . '/quicknote.md'
-    if has("nvim")
-        let g:python_host_prog = "/usr/bin/python2"
-        let g:python3_host_prog = "/usr/bin/python3"
-    endif
-
-    " vimrc 中设置环境变量启用 pygments
-    let $GTAGSLABEL = 'native-pygments'
-    " gtags支持文件名包含空格
-    " let $GTAGSALLOWBLANK = 1
-    " gtags 将 h 文件 识别为 c++头文件,否则是c语言文件
-    let $GTAGSFORCECPP = 1
-    " 设置gtags的配置位置
-    let $GTAGSCONF = $HOME . '/.globalrc' " 此路径根据实际设置（find一下
 " endfunction
 
