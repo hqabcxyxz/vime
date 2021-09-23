@@ -127,3 +127,23 @@ snippet get_debug "从gist 下载debug模块" b
 wget -nc https://gist.githubusercontent.com/captainfffsama/4918458f967f5e64a52f686047b72e23/raw/24a53e91d580e6220f2de1384f1e319150b17499/debug_tools.py`
 endsnippet
 
+snippet parse_args "常用的用来解析模型参数的" b
+def parse_args():
+    parser = argparse.ArgumentParser(description="train args set")
+    parser.add_argument("--checkpoint",
+                        type=str,
+                        default="~/torch_hub_ckpt/resnet18-f37072fd.pth",
+                        help='')
+    parser.add_argument("--batch_size", type=int, default=4)
+    parser.add_argument("--data_dir",
+                        type=str,
+                        default="/data/indoor_meter/model_test1")
+    parser.add_argument("--lr", type=float, default=3e-4)
+    parser.add_argument("--epochs", type=int, default=50)
+    parser.add_argument("--save_dir",
+                        type=str,
+                        default="/data/experiments_data/point_weight")
+    args = parser.parse_args()
+    return args
+endsnippet
+
