@@ -103,7 +103,8 @@ endif
 " csv插件
 "Plug 'chrisbra/csv.vim', {'for': 'csv'}
 " 悬浮终端
-Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
+" Plug 'voldikss/vim-floaterm', {'on': ['FloatermNew', 'FloatermToggle']}
+Plug 'voldikss/vim-floaterm'
 "" 笔记插件，支持markdown
 "Plug 'vimwiki/vimwiki'
 " Plug 'SidOfc/mkdx'
