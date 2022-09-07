@@ -147,3 +147,20 @@ def parse_args():
     return args
 endsnippet
 
+snippet Singleton "单例元类" b
+# NOTE: 进程安全,进程独立,但是线程不独立,不是线程安全的
+# 这里是一个强引用,不会被GC回收..若是用于一些特殊的资源类,换成弱引用
+class Singleton(type):
+    def __init__(cls, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        cls.__instance = None
+
+    def __call__(cls, *args, **kwargs):
+        if cls.__instance is None:
+            cls.__instance = super().__call__(*args, **kwargs)
+            return cls.__instance
+        else:
+            if kwargs and hasattr(cls.__instance, "_reinit"):
+                cls.__instance._reinit(**kwargs)
+            return cls.__instance
+endsnippet

@@ -31,6 +31,7 @@ let g:coc_global_extensions = [
 
 
 
+"    \ 'coc-sumneko-lua',
 "    \ 'coc-translator',
 "    \ 'coc-bookmark',
 "    \ 'coc-prettier',

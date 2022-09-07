@@ -5,6 +5,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 " c debug
 Plug 'puremourning/vimspector'
+" C++编译
+"Plug 'luzhlon/x.vim'
+"Plug 'luzhlon/qrun.vim'
+"Plug 'luzhlon/xmake.vim'
 " 键位提示
 Plug 'liuchengxu/vim-which-key'
 
