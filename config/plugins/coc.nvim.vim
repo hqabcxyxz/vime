@@ -32,32 +32,32 @@ endif
 
 " tab触发补全或者选择下一个补全
 inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<c-n>" :
+    \ coc#pum#visible() ? "\<c-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
 
 " shift tab 选择上一个补全
 inoremap <silent><expr> <S-TAB>
-    \ pumvisible() ? "\<C-p>" :
+    \ coc#pum#visible() ? "\<C-p>" :
     \ "\<C-h>"
 
 " alt j选择下一个补全
 inoremap <silent><expr> <m-j>
-    \ pumvisible() ? "\<C-n>" : "\<C-R>=coc#rpc#request('snippetNext', [])\<cr>"
-    " \ pumvisible() ? "\<C-n>" : return
+    \ coc#pum#visible() ? "\<C-n>" : "\<C-R>=coc#rpc#request('snippetNext', [])\<cr>"
+    " \ coc#pum#visible() ? "\<C-n>" : return
 
 " " alt k选择上一个补全
 inoremap <silent><expr> <m-k>
-    \ pumvisible() ? "\<C-p>" : "\<C-R>=coc#rpc#request('snippetPrev', [])\<cr>"
-    " \ pumvisible() ? "\<C-p>" : return
+    \ coc#pum#visible() ? "\<C-p>" : "\<C-R>=coc#rpc#request('snippetPrev', [])\<cr>"
+    " \ coc#pum#visible() ? "\<C-p>" : return
 
 " down 选择下一个补全
 inoremap <silent><expr> <down>
-    \ pumvisible() ? "\<C-n>" : "\<down>"
+    \ coc#pum#visible() ? "\<C-n>" : "\<down>"
 
 " up 选择上一个补全
 inoremap <silent><expr> <up>
-    \ pumvisible() ? "\<C-p>" : "\<up>"
+    \ coc#pum#visible() ? "\<C-p>" : "\<up>"
 
 " alt j k 用于补全块的跳转，优先补全块跳转
 if common#functions#HasCocPlug('coc-snippets')
@@ -70,7 +70,7 @@ if exists('*complete_info')
     " 如果您的(Neo)Vim版本支持，则使用`complete_info`
     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> coc#pum#visible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " diagnostic 跳转
